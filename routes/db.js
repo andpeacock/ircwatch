@@ -28,14 +28,14 @@ function lpush(list, item, cb) {
 }
 function get50(list) {
   console.log("in get50");
-  // client.send_command("lrange", [list, "0", "50"], function (err, reply) {
-  //   if(err) return console.log(err);
-  //   return reply;
-  // });
-  redis.lrange('list:' + list, 0,-1, function(err, lastNode){
+  client.send_command("lrange", [list, "0", "50"], function (err, reply) {
     if(err) return console.log(err);
-    return cb(lastNode);
+    return cb(reply);
   });
+  // redis.lrange('list:' + list, 0,-1, function(err, lastNode){
+  //   if(err) return console.log(err);
+  //   return cb(lastNode);
+  // });
 }
 
 module.exports.lpush= lpush;
