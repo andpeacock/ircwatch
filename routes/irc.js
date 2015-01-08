@@ -2,8 +2,6 @@ var irc= require('irc');
 var yo= require('./yo');
 var pb= require('./pastebin');
 
-console.log("started");
-
 var client = new irc.Client('irc.zulusquad.org', 'FUCKBITCHESGETMONEY', {
   channels: ['#zulu']
 });

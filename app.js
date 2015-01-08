@@ -11,7 +11,7 @@ var imgur= require('imgur');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var irc= require('./routes/irc');
+//var irc= require('./routes/irc');
 
 var app = express();
 
