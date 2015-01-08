@@ -22,20 +22,14 @@ console.log("this called");
 function lpush(list, item) {
   console.log("in lpush");
   client.send_command("lpush", [list, item], function (err, reply) {
-    if(err) {
-      console.log("lpush error");
-      return console.log(err);
-    } 
+    if(err) return console.log(err);
     return reply;
   });
 }
 function get50(list) {
   console.log("in get50");
   client.send_command("lrange", [list, 0, 50], function (err, reply) {
-    if(err) {
-      console.log("get50 error");
-      return console.log(err);
-    } 
+    if(err) return console.log(err);
     return reply;
   });
 }
