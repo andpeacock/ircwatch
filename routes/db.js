@@ -10,7 +10,11 @@ client.get('foo', function (err, reply) {
   console.log(reply.toString()); // Will print `bar`
 });
 client.lpush('testlist', 'hello');
-client.lindex('testlist', 0, function (err, reply) {
-  if(err) return console.log(err);
-  console.log(reply);
+client.send_command("lpush", ["testlist", "hello"], function (rep) {
+  console.log("in top cb");
+  client.send_command("lindex", ["testlist", 0], function (err, reply) {
+    console.log("in second cb");
+    if(err) return console.log(err);
+    console.log(reply);
+  });
 });
