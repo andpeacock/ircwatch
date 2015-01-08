@@ -36,8 +36,6 @@ function postYo(link) {
     if(err) return console.log(err);
   });
 }
-
-
 var client = new irc.Client('irc.zulusquad.org', 'FUCKBITCHESGETMONEY', {
   channels: ['#zulu']
 });
@@ -50,7 +48,9 @@ client.addListener('message', function (from, to, message) {
 client.addListener('error', function(message) {
   console.log('error: ', message);
 });
-
+app.get('/', function(req, res) {
+  res.render('index', { title: 'Express' });
+});
 app.get('/rejoin', function (req, res) {
   client.join('#zulu');
   res.send("Done");
