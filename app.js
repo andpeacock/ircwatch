@@ -13,7 +13,6 @@ var users = require('./routes/users');
 
 var app = express();
 
-
 var client = new irc.Client('irc.zulusquad.org', 'FUCKBITCHESGETMONEY', {
   channels: ['#zulu']
 });
