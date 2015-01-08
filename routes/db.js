@@ -26,7 +26,7 @@ function lpush(list, item, cb) {
     return cb(reply);
   });
 }
-function get50(list) {
+function get50(list, cb) {
   console.log("in get50");
   client.send_command("lrange", [list, "0", "50"], function (err, reply) {
     if(err) return console.log(err);
