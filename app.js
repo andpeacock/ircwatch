@@ -13,15 +13,7 @@ var users = require('./routes/users');
 
 var app = express();
 
-var client = new irc.Client('irc.zulusquad.org', 'FUCKBITCHESGETMONEY', {
-  channels: ['#zulu']
-});
-client.addListener('message', function (from, to, message) {
-  if(message.match('jezza(\d+)?')) {
-    var msgstr= from + ' => : ' + message;
-    newPaste(msgstr);
-  }
-});
+
 var yoapi= "49fcd110-4652-4067-8546-fc04e15f0d21";
 function newPaste(cont) {
   pastebin.new({title: 'test', content: cont, privacy: 1, expire:'1D'}, function (err, ret) {
@@ -45,6 +37,25 @@ function postYo(link) {
   });
 }
 
+
+var client = new irc.Client('irc.zulusquad.org', 'FUCKBITCHESGETMONEY', {
+  channels: ['#zulu']
+});
+client.addListener('message', function (from, to, message) {
+  if(message.match('jezza(\d+)?')) {
+    var msgstr= from + ' => : ' + message;
+    newPaste(msgstr);
+  }
+});
+client.addListener('error', function(message) {
+  console.log('error: ', message);
+});
+
+app.get('/rejoin', function (req, res) {
+  client.join('#zulu');
+  res.send("Done");
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -57,8 +68,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/users', users);
+// app.use('/', routes);
+// app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
