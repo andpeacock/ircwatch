@@ -8,12 +8,12 @@ var done= false;
 
 /* GET home page. */
 router.get('/', function (req, res) {
-  //db.get50('imgur', function (reply) {
-    //console.log(reply);
+  db.get50('imgur', function (reply) {
+    console.log(reply);
     res.render('index', {
       title: 'Random Shit'
     });
-  //});
+  });
 });
 
 function addPhotoList(link, cb) {
