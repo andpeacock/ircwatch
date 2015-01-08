@@ -8,8 +8,17 @@ var done= false;
 
 /* GET home page. */
 router.get('/', function (req, res) {
-  res.render('index', { title: 'Express' });
+  db.get50('imgur', function (reply) {
+    console.log(reply);
+    res.render('index', {
+      title: 'Random Shit'
+    });
+  })
 });
+
+function addPhotoList(link, cb) {
+  db.lpush('imgur', link, cb);
+}
 
 router.use('/photo', multer({ dest: './uploads/',
   rename: function (fieldname, filename) {
@@ -21,7 +30,9 @@ router.use('/photo', multer({ dest: './uploads/',
   onFileUploadComplete: function (file) {
     imgur.uploadFile(file.path).then(function (json) {
       console.log(json.data.link);
-      done= true;
+      addPhotoList(json.data.link, function() {
+        return done= true;
+      });
     }).catch(function (err) {
       console.error(err.message);
     });
@@ -35,8 +46,9 @@ router.post('/photo', function (req, res){
 
 router.post('/link', function (req, res) {
   imgur.uploadUrl(req.body.photoLink).then(function (json) {
-    console.log(json.data.link);
-    res.redirect('/');
+    addPhotoList(json.data.link, function() {
+      return res.redirect('/');
+    });
   }).catch(function (err) {
     console.error(err.message);
   });
