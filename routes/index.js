@@ -17,8 +17,9 @@ router.get('/', function (req, res) {
 });
 
 function addPhotoList(link, cb) {
-  db.lpush('imgur', link, function() {
-    return console.log("success?");
+  db.lpush('imgur', link, function (reply) {
+    console.log(reply);
+    cb();
   });
 }
 

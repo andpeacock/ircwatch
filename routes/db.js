@@ -19,16 +19,16 @@ console.log("this called");
 //   });
 // });
 
-function lpush(list, item) {
+function lpush(list, item, cb) {
   console.log("in lpush");
   client.send_command("lpush", [list, item], function (err, reply) {
     if(err) return console.log(err);
-    return reply;
+    return cb(reply);
   });
 }
 function get50(list) {
   console.log("in get50");
-  client.send_command("lrange", [list, 0, 50], function (err, reply) {
+  client.send_command("lrange", [list, "0", "50"], function (err, reply) {
     if(err) return console.log(err);
     return reply;
   });
