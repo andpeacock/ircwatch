@@ -9,7 +9,7 @@ var done= false;
 /* GET home page. */
 router.get('/', function (req, res) {
   //db.get50('imgur', function (reply) {
-    console.log(reply);
+    //console.log(reply);
     res.render('index', {
       title: 'Random Shit'
     });
@@ -45,7 +45,6 @@ router.post('/photo', function (req, res){
     res.redirect('/');
   }
 });
-
 router.post('/link', function (req, res) {
   imgur.uploadUrl(req.body.photoLink).then(function (json) {
     addPhotoList(json.data.link, function() {
