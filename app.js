@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var irc= require('irc');
 var request= require('request');
 var pastebin= require('pastebin')('ff89e92a9a25f6febb3c6b798c20a4a6');
+var imgur= require('imgur');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -36,6 +37,7 @@ function postYo(link) {
     if(err) return console.log(err);
   });
 }
+/*
 var client = new irc.Client('irc.zulusquad.org', 'FUCKBITCHESGETMONEY', {
   channels: ['#zulu']
 });
@@ -48,13 +50,15 @@ client.addListener('message', function (from, to, message) {
 client.addListener('error', function(message) {
   console.log('error: ', message);
 });
-app.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
-});
-app.get('/rejoin', function (req, res) {
-  client.join('#zulu');
-  res.send("Done");
-});
+*/
+// app.get('/', function(req, res) {
+//   res.render('index', { title: 'Express' });
+// });
+// app.get('/rejoin', function (req, res) {
+//   client.join('#zulu');
+//   res.send("Done");
+// });
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -68,7 +72,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use('/', routes);
+app.use('/', routes);
 // app.use('/users', users);
 
 // catch 404 and forward to error handler
