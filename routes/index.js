@@ -11,7 +11,8 @@ router.get('/', function (req, res) {
   db.get50('imgur', function (reply) {
     console.log(reply);
     res.render('index', {
-      title: 'Random Shit'
+      title: 'Random Shit',
+      linkList: reply
     });
   });
 });

@@ -12,3 +12,7 @@ block content
   form(action="/link", method="POST")
     input(type="text", name="photoLink")
     input(type="submit", value="Upload Link", name="submit")
+  ul
+    each l in linkList
+      li
+        a(href="#{l}")= l
