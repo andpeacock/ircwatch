@@ -17,7 +17,9 @@ router.get('/', function (req, res) {
 });
 
 function addPhotoList(link, cb) {
-  db.lpush('imgur', link, cb);
+  db.lpush('imgur', link, function() {
+    return console.log("success?");
+  });
 }
 
 router.use('/photo', multer({ dest: './uploads/',
