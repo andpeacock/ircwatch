@@ -29,7 +29,6 @@ router.use('/photo', multer({ dest: './uploads/',
 }));
 router.post('/photo', function (req, res){
   if(done==true){
-    //res.end("File uploaded.");
     res.redirect('/');
   }
 });
@@ -37,12 +36,10 @@ router.post('/photo', function (req, res){
 router.post('/link', function (req, res) {
   imgur.uploadUrl(req.body.photoLink).then(function (json) {
     console.log(json.data.link);
-    res.end("Complete");
+    res.redirect('/');
   }).catch(function (err) {
     console.error(err.message);
   });
 });
-
-
 
 module.exports = router;

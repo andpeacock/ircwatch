@@ -9,3 +9,8 @@ client.set('foo', 'bar');
 client.get('foo', function (err, reply) {
   console.log(reply.toString()); // Will print `bar`
 });
+client.lpush('testlist', 'hello');
+client.lindex('testlist', 0, function (err, reply) {
+  if(err) return console.log(err);
+  console.log(reply);
+});
