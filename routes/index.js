@@ -10,17 +10,17 @@ var done= false;
 /* GET home page. */
 router.get('/', function (req, res) {
   db.get50('imgur', function (reply) {
-    // db.get50('zulu', function (rep) {
-    //   res.render('index', {
-    //     title: 'Random Shit',
-    //     linkList: reply,
-    //     zuluList: rep
-    //   });
-    // });
-    res.render('index', {
-      title: 'Random Shit',
-      linkList: reply
+    db.get50('zulu', function (rep) {
+      res.render('index', {
+        title: 'Random Shit',
+        linkList: reply,
+        zuluList: rep
+      });
     });
+    // res.render('index', {
+    //   title: 'Random Shit',
+    //   linkList: reply
+    // });
   });
 });
 

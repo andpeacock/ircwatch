@@ -5,11 +5,11 @@ block content
   h1 Photo
   form(enctype="multipart/form-data", action="/photo", method="POST")#uploadForm
     input(type="file", name="userPhoto")
-    button(type="submit", value="Upload Image", name="submit").btn.btn-default
+    button(type="submit", value="Upload Image", name="submit").btn.btn-default Submit Photo
   h1 Link
   form(action="/link", method="POST")
     input(type="text", name="photoLink")
-    button(type="submit", value="Upload Link", name="submit").btn.btn-default
+    button(type="submit", value="Upload Link", name="submit").btn.btn-default Submit Link
   ul
     each l in linkList
       li
