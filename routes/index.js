@@ -17,10 +17,6 @@ router.get('/', function (req, res) {
         zuluList: rep
       });
     });
-    // res.render('index', {
-    //   title: 'Random Shit',
-    //   linkList: reply
-    // });
   });
 });
 

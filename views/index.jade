@@ -1,16 +1,29 @@
 extends layout
 
 block content
-  button(type="button").btn.btn-default#rejoinZulu Rejoin Zulu
-  h1 Photo
-  form(enctype="multipart/form-data", action="/photo", method="POST")#uploadForm
-    input(type="file", name="userPhoto")
-    button(type="submit", value="Upload Image", name="submit").btn.btn-default Submit Photo
-  h1 Link
-  form(action="/link", method="POST")
-    input(type="text", name="photoLink")
-    button(type="submit", value="Upload Link", name="submit").btn.btn-default Submit Link
-  ul
-    each l in linkList
-      li
-        a(href="#{l}")= l
+  div.row
+    div.col-md-12.col-sm-12
+      button(type="button").btn.btn-default#rejoinZulu Rejoin Zulu
+  div.row
+    div.col-md-6.col-sm-6
+      h1 Photo
+      form(enctype="multipart/form-data", action="/photo", method="POST")#uploadForm
+        input(type="file", name="userPhoto")
+        button(type="submit", value="Upload Image", name="submit").btn.btn-default.btn-lg.btn-block Submit Photo
+    div.col-md-6.col-sm-6
+      h1 Link
+      form(action="/link", method="POST")
+        input(type="text", name="photoLink")
+        button(type="submit", value="Upload Link", name="submit").btn.btn-default.btn-lg.btn-block Submit Link
+  div.row
+    div.col-md-12.col-sm-12
+      h1 Imgur Links
+      div.list-group
+        each l in linkList
+          a(href="#{l}").list-group-item= l
+  div.row
+    div.col-md-12.col-sm-12
+      h1 Zulu mentions
+      ul.list-group
+        each z in zuluList
+          li.list-group-item= z
