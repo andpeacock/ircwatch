@@ -1,17 +1,15 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  button(type="button")#rejoinZulu Rejoin Zulu
+  button(type="button").btn.btn-default#rejoinZulu Rejoin Zulu
   h1 Photo
   form(enctype="multipart/form-data", action="/photo", method="POST")#uploadForm
     input(type="file", name="userPhoto")
-    input(type="submit", value="Upload Image", name="submit")
+    button(type="submit", value="Upload Image", name="submit").btn.btn-default
   h1 Link
   form(action="/link", method="POST")
     input(type="text", name="photoLink")
-    input(type="submit", value="Upload Link", name="submit")
+    button(type="submit", value="Upload Link", name="submit").btn.btn-default
   ul
     each l in linkList
       li
