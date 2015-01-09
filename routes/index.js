@@ -5,8 +5,6 @@ var db= require('./db');
 var irc= require('./irc');
 var router= express.Router();
 
-var done= false;
-
 /* GET home page. */
 router.get('/', function (req, res) {
   db.get50('imgur', function (reply) {
@@ -18,6 +16,13 @@ router.get('/', function (req, res) {
       });
     });
   });
+  // db.getMultiList(['imgur', 'zulu'], function (rlist) {
+  //   res.render('index', {
+  //     title: 'Random Shit',
+  //     linkList: [0],
+  //     zuluList: [1]
+  //   });
+  // });
 });
 
 router.get('/rejoin', function (req, res) {
@@ -30,7 +35,7 @@ function addPhotoList(link, cb) {
     cb();
   });
 }
-
+//Handling for photo uploads
 router.use('/photo', multer({ dest: './uploads/',
   rename: function (fieldname, filename) {
     return filename+Date.now();
@@ -41,7 +46,7 @@ router.use('/photo', multer({ dest: './uploads/',
   onFileUploadComplete: function (file) {
     imgur.uploadFile(file.path).then(function (json) {
       addPhotoList(json.data.link, function() {
-        return done= true;
+        return;
       });
     }).catch(function (err) {
       console.error(err.message);
