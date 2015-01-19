@@ -21,7 +21,8 @@ block content
       h1 Imgur Links
       div.list-group
         each l in linkList
-          a(href="#{l}").list-group-item= l
+          a(href="#{l}").list-group-item
+            img(src="#{l}")
   div.row
     div.col-md-12.col-sm-12
       h1 Zulu Mentions
