@@ -10,8 +10,10 @@ var client = new irc.Client('irc.zulusquad.org', 'FUCKBITCHESGETMONEY', {
 client.addListener('message', function (from, to, message) {
   if(message.match('jezza(\d+)?')) {
     var msgstr= '('+moment().format('MM/DD/YYYY HH:mm:ss')+'): '+from + ' => : ' + message;
-    pb.newPaste(msgstr, yo.postYo);
-    db.lpush('zulu', msgstr, function(reply) {
+    pb.newPaste(msgstr, function (link) {
+      yo.postYo(link, function() {return;});
+    });
+    db.lpush('zulu', msgstr, function (reply) {
       console.log("worked?");
       console.log(reply);
     });
