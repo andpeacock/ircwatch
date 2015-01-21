@@ -22,7 +22,7 @@ block content
       div#imgurImg.list-group.row
         each l in linkList
           a(href="#{l}").list-group-item.col-md-6.col-sm-6.col-lg-12
-            img(src="#{l}").img-thumbnail
+            img(src="#{l.replace('http://', 'https://')}").img-thumbnail
         a(href="#")#picMore.col-md-12.col-sm-12.col-lg-12.list-group-item Show more
   div.row
     div.col-md-12.col-sm-12

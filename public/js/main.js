@@ -5,13 +5,14 @@ $(function() {
       self.binding();
     },
     binding: function() {
+      var self= this;
       $('#rejoinZulu').on('click', function() {
         $.get('/rejoin', function(data) {
           alert("rejoined");
         });
       });
       $('#imgurh1').on('click', function() {
-        if($('imgurImg').is(':visible'))
+        if($('#imgurImg').is(':visible'))
           $('#imgurImg').slideUp(300);
         else
           $('#imgurImg').slideDown(300);
