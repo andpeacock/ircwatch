@@ -17,13 +17,13 @@ block content
         input(type="text", name="photoLink").form-control
         button(type="submit", value="Upload Link", name="submit").btn.btn-default.btn-lg.btn-block Submit Link
   div.row
-    div.col-md-12.col-sm-12
+    div.col-md-12.col-sm-12.col-lg-12
       h1 Imgur Links
       div.list-group
         each l in linkList
-          a(href="#{l}").list-group-item.col-sm-6.col-md-6
+          a(href="#{l}").list-group-item.col-md-6.col-sm-6.col-lg-6
             img(src="#{l}").img-thumbnail
-        a(href="#")#picMore.list-group-item Show more
+        a(href="#")#picMore.col-md-12.col-sm-12.col-lg-12.list-group-item Show more
   div.row
     div.col-md-12.col-sm-12
       h1 Zulu Mentions
