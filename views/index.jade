@@ -21,11 +21,14 @@ block content
       h1 Imgur Links
       div.list-group
         each l in linkList
-          a(href="#{l}").list-group-item
-            img(src="#{l}")
+          a(href="#{l}").list-group-item.col-sm-6.col-md-6
+            img(src="#{l}").img-thumbnail
+        a(href="#")#picMore.list-group-item Show more
   div.row
     div.col-md-12.col-sm-12
       h1 Zulu Mentions
       ul.list-group
         each z in zuluList
           li.list-group-item= z
+        li.list-group-item
+          a(href="#")#zuluMore Show more

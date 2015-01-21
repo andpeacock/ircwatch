@@ -39,7 +39,7 @@ function ircWatch() {
   this.addListener('message', function (from, to, message) {
     this.userSubscribe(from, to, message);
     this.userMatch(from, to, message)
-  })
+  });
 }
 ircWatch.prototype.userSubscribe = function(from, to, message) {
   if(message.match('\!subscribe'))
