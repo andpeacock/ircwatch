@@ -22,7 +22,7 @@ function getMultiList(list, cb) {
     client.send_command("lrange", [list[i], "0", "50"], function (err, reply) {
       if(err) return console.log(err);
       retList.push(reply);
-      if(retList.length== i)
+      if(retList.length== list.length)
         return cb(retList);
     });
   }
