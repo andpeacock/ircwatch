@@ -45,6 +45,11 @@ ircWatch.prototype.userSubscribe = function(from, to, message) {
   if(message.match('\!subscribe'))
     this.userWatch.push(from);
 };
+ircWatch.prototype.listEcho = function(from, message) {
+  var self= this;
+  if(message.match('\!echo'))
+    this.client.say('#zulu', self.userWatch.join(', '));
+};
 ircWatch.prototype.userMatch = function(from, to, message) {
   for(var i= 0; i< this.userWatch.length; i++) {
     var rg= new RegExp(this.userWatch[i]+ "(\d+)?");

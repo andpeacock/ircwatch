@@ -2,33 +2,33 @@ var express= require('express');
 var multer= require('multer');
 var imgur= require('imgur');
 var db= require('./db');
-var irc= require('./irc');
+//var irc= require('./irc');
 var router= express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res) {
-  db.get50('imgur', function (reply) {
-    db.get50('zulu', function (rep) {
-      res.render('index', {
-        title: 'Random Shit',
-        linkList: reply,
-        zuluList: rep
-      });
-    });
-  });
-  // db.getMultiList(['imgur', 'zulu'], function (rlist) {
-  //   res.render('index', {
-  //     title: 'Random Shit',
-  //     linkList: [0],
-  //     zuluList: [1]
+  // db.get50('imgur', function (reply) {
+  //   db.get50('zulu', function (rep) {
+  //     res.render('index', {
+  //       title: 'Random Shit',
+  //       linkList: reply,
+  //       zuluList: rep
+  //     });
   //   });
   // });
+  db.getMultiList(['imgur', 'zulu'], function (rlist) {
+    res.render('index', {
+      title: 'Random Shit',
+      linkList: [0],
+      zuluList: [1]
+    });
+  });
 });
 
-router.get('/rejoin', function (req, res) {
-  irc.chanJoin('zulu');
-  res.send("Done");
-});
+// router.get('/rejoin', function (req, res) {
+//   irc.chanJoin('zulu');
+//   res.send("Done");
+// });
 
 function addPhotoList(link, cb) {
   db.lpush('imgur', link, function (reply) {
