@@ -19,8 +19,8 @@ router.get('/', function (req, res) {
   db.getMultiList(['imgur', 'zulu'], function (rlist) {
     res.render('index', {
       title: 'Random Shit',
-      linkList: [0],
-      zuluList: [1]
+      linkList: rlist[0],
+      zuluList: rlist[1]
     });
   });
 });
