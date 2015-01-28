@@ -16,6 +16,7 @@ router.get('/', function (req, res) {
       });
     });
   });
+  console.log("hello?");
   // db.getMultiList(['imgur', 'zulu'], function (rlist) {
   //   res.render('index', {
   //     title: 'Random Shit',
