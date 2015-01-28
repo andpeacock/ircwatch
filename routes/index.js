@@ -7,23 +7,22 @@ var router= express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res) {
-  db.get50('imgur', function (reply) {
-    db.get50('zulu', function (rep) {
-      res.render('index', {
-        title: 'Random Shit',
-        linkList: reply,
-        zuluList: rep
-      });
-    });
-  });
-  console.log("hello?");
-  // db.getMultiList(['imgur', 'zulu'], function (rlist) {
-  //   res.render('index', {
-  //     title: 'Random Shit',
-  //     linkList: rlist[0],
-  //     zuluList: rlist[1]
+  // db.get50('imgur', function (reply) {
+  //   db.get50('zulu', function (rep) {
+  //     res.render('index', {
+  //       title: 'Random Shit',
+  //       linkList: reply,
+  //       zuluList: rep
+  //     });
   //   });
   // });
+  db.getMultiList(['imgur', 'zulu'], function (rlist) {
+    res.render('index', {
+      title: 'Random Shit',
+      linkList: rlist[0],
+      zuluList: rlist[1]
+    });
+  });
 });
 
 // router.get('/rejoin', function (req, res) {

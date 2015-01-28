@@ -29,7 +29,7 @@ block content
       h1 Zulu Mentions
       ul.list-group
         each z in zuluList
-          li.list-group-item
-            if(z.match(/http(s)?\:\/\/(\S*)/))
+          li.list-group-item= z
+            //-if(z.match(/http(s)?\:\/\/(\S*)/))
         li.list-group-item
           a(href="#")#zuluMore Show more
