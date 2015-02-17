@@ -8,7 +8,7 @@ var client = new irc.Client('irc.zulusquad.org', 'FUCKBITCHESGETMONEY', {
   channels: ['#zulu']
 });
 client.addListener('message', function (from, to, message) {
-  if(message.match('jezza(\d+)?')) {
+  if(message.match(/jezza(\d+)?/i)) {
     var msgstr= '('+moment().format('MM/DD/YYYY HH:mm:ss')+'): '+from + ' => : ' + message;
     pb.newPaste(msgstr, function (link) {
       yo.postYo(link, function() {return;});
@@ -28,19 +28,35 @@ client.addListener('part', function(channel, who, reason) {//Rejoin if bot leave
   chanJoin('zulu');
 });
 function chanJoin(chan) {
-  return client.join('#'+chan);
+  client.join('#'+chan);
+  client.addListener('message', function (from, to, message) {
+    if(message.match('jezza(\d+)?')) {
+      var msgstr= '('+moment().format('MM/DD/YYYY HH:mm:ss')+'): '+from + ' => : ' + message;
+      pb.newPaste(msgstr, function (link) {
+        yo.postYo(link, function() {return;});
+      });
+      db.lpush('zulu', msgstr, function (reply) {
+        console.log("worked?");
+        console.log(reply);
+      });
+    }
+  });
+  return;
 }
 
 function ircWatch() {
   this.client= new irc.Client('irc.zulusquad.org', 'FUCKBITCHESGETMONEY', {
     channels: ['#zulu']
   }),
-  this.userWatch= ["jezza"],
-  this.addListener('message', function (from, to, message) {
+  this.userWatch= ["jezza"];
+  this.messageListen();
+}
+ircWatch.prototype.messageListen = function() {
+  this.client.addListener('message', function (from, to, message) {
     this.userSubscribe(from, to, message);
     this.userMatch(from, to, message)
   });
-}
+};
 ircWatch.prototype.userSubscribe = function(from, to, message) {
   if(message.match('\!subscribe'))
     this.userWatch.push(from);
