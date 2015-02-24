@@ -4,7 +4,7 @@ var pb= require('./pastebin');
 var db= require('./db');
 var moment= require('moment');
 
-var client = new irc.Client('irc.zulusquad.org', 'jezzaisnthererightnow', {
+var client = new irc.Client('irc.zulusquad.org', 'MAKETHEFORUMSLIVE', {
   channels: ['#zulu']
 });
 client.addListener('message', function (from, to, message) {
