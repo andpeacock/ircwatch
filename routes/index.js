@@ -25,10 +25,10 @@ router.get('/', function (req, res) {
   });
 });
 
-// router.get('/rejoin', function (req, res) {
-//   irc.chanJoin('zulu');
-//   res.send("Done");
-// });
+router.get('/rejoin', function (req, res) {
+  db.clearList('zulu');
+  res.send("Done");
+});
 
 function addPhotoList(link, cb) {
   db.lpush('imgur', link, function (reply) {

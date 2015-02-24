@@ -10,6 +10,12 @@ function lpush(list, item, cb) {
     return cb(reply);
   });
 }
+function clearList(list, cb) {
+  client.send_command("ltrim", [list, "1", "-1"], function (err, reply) {
+    if(err) return console.log(err);
+    return cb(reply);
+  });
+}
 function get50(list, cb) {
   client.send_command("lrange", [list, "0", "50"], function (err, reply) {
     if(err) return console.log(err);
@@ -31,6 +37,7 @@ function getMultiList(list, cb) {
 module.exports.lpush= lpush;
 module.exports.get50= get50;
 module.exports.getMultiList= getMultiList;
+module.exports.clearList= clearList;
 
 // function DB() {
 //   this.redisURL= url.parse(process.env.REDISCLOUD_URL),

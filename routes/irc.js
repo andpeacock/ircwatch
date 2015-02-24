@@ -4,7 +4,7 @@ var pb= require('./pastebin');
 var db= require('./db');
 var moment= require('moment');
 
-var client = new irc.Client('irc.zulusquad.org', 'FUCKBITCHESGETMONEY', {
+var client = new irc.Client('irc.zulusquad.org', 'jezzaisnthererightnow', {
   channels: ['#zulu']
 });
 client.addListener('message', function (from, to, message) {
@@ -44,37 +44,37 @@ function chanJoin(chan) {
   return;
 }
 
-function ircWatch() {
-  this.client= new irc.Client('irc.zulusquad.org', 'FUCKBITCHESGETMONEY', {
-    channels: ['#zulu']
-  }),
-  this.userWatch= ["jezza"];
-  this.messageListen();
-}
-ircWatch.prototype.messageListen = function() {
-  this.client.addListener('message', function (from, to, message) {
-    this.userSubscribe(from, to, message);
-    this.userMatch(from, to, message)
-  });
-};
-ircWatch.prototype.userSubscribe = function(from, to, message) {
-  if(message.match('\!subscribe'))
-    this.userWatch.push(from);
-};
-ircWatch.prototype.listEcho = function(from, message) {
-  var self= this;
-  if(message.match('\!echo'))
-    this.client.say('#zulu', self.userWatch.join(', '));
-};
-ircWatch.prototype.userMatch = function(from, to, message) {
-  for(var i= 0; i< this.userWatch.length; i++) {
-    var rg= new RegExp(this.userWatch[i]+ "(\d+)?");
-    if(message.match(rg)) {
-      var msgstr= '('+moment().format('MM/DD/YYYY HH:mm:ss')+'): '+from + ' => : ' + message;
-      pb.newPaste(msgstr, yo.postYo);
-    }
-  }
-};
+// function ircWatch() {
+//   this.client= new irc.Client('irc.zulusquad.org', 'FUCKBITCHESGETMONEY', {
+//     channels: ['#zulu']
+//   }),
+//   this.userWatch= ["jezza"];
+//   this.messageListen();
+// }
+// ircWatch.prototype.messageListen = function() {
+//   this.client.addListener('message', function (from, to, message) {
+//     this.userSubscribe(from, to, message);
+//     this.userMatch(from, to, message)
+//   });
+// };
+// ircWatch.prototype.userSubscribe = function(from, to, message) {
+//   if(message.match('\!subscribe'))
+//     this.userWatch.push(from);
+// };
+// ircWatch.prototype.listEcho = function(from, message) {
+//   var self= this;
+//   if(message.match('\!echo'))
+//     this.client.say('#zulu', self.userWatch.join(', '));
+// };
+// ircWatch.prototype.userMatch = function(from, to, message) {
+//   for(var i= 0; i< this.userWatch.length; i++) {
+//     var rg= new RegExp(this.userWatch[i]+ "(\d+)?");
+//     if(message.match(rg)) {
+//       var msgstr= '('+moment().format('MM/DD/YYYY HH:mm:ss')+'): '+from + ' => : ' + message;
+//       pb.newPaste(msgstr, yo.postYo);
+//     }
+//   }
+// };
 
 module.exports.chanJoin= chanJoin;
 module.exports.ircClient= client;
