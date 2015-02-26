@@ -12,9 +12,9 @@ function lpush(list, item, cb) {
 }
 function clearList(list, cb) {
   console.log("IN CLEAR LIST IS THIS CALLED??");
-  client.send_command("ltrim", [list, "1", "-1"], function (err, reply) {
-    if(err) return console.log(err);
-    return cb(reply);
+  client.del('zulu', function(err, reply) {
+    console.log(reply);
+    cb(reply);
   });
 }
 function get50(list, cb) {
