@@ -7,8 +7,29 @@ var moment= require('moment');
 var client = new irc.Client('irc.zulusquad.org', 'MAKETHEFORUMSLIVE', {
   channels: ['#zulu']
 });
-client.addListener('message', function (from, to, message) {
-  if(message.match(/jezza(\d+)?/i)) {
+// client.addListener('message', function (from, to, message) {
+//   if(message.match(/jezza(\d+)?/i)) {
+//     var msgstr= '('+moment().format('MM/DD/YYYY HH:mm:ss')+'): '+from + ' => : ' + message;
+//     pb.newPaste(msgstr, function (link) {
+//       yo.postYo(link, function() {return;});
+//     });
+//     db.lpush('zulu', msgstr, function (reply) {
+//       console.log("worked?");
+//       console.log(reply);
+//     });
+//   }
+// });
+client.addListener('message', matchCheck);
+client.addListener('error', function(message) {//Rejoin if error
+  console.log('error: '+ message);
+  chanJoin('zulu');
+});
+client.addListener('part', function(channel, who, reason) {//Rejoin if bot leaves for some reason
+  console.log('%s has left %s: %s', who, channel, reason);
+  chanJoin('zulu');
+});
+function matchCheck(from, to, message) {
+  if(message.match('jezza(\d+)?')) {
     var msgstr= '('+moment().format('MM/DD/YYYY HH:mm:ss')+'): '+from + ' => : ' + message;
     pb.newPaste(msgstr, function (link) {
       yo.postYo(link, function() {return;});
@@ -18,30 +39,11 @@ client.addListener('message', function (from, to, message) {
       console.log(reply);
     });
   }
-});
-client.addListener('error', function(message) {//Rejoin if error
-  console.log('error: '+ message);
-  chanJoin('zulu');
-});
-client.addListener('part', function(channel, who, reason) {//Rejoin if bot leaves for some reason
-  console.log('%s has left %s: %s', who, channel, reason);
-  chanJoin('zulu');
-});
+}
 function chanJoin(chan) {
-  client.join('#'+chan);
-  client.addListener('message', function (from, to, message) {
-    if(message.match('jezza(\d+)?')) {
-      var msgstr= '('+moment().format('MM/DD/YYYY HH:mm:ss')+'): '+from + ' => : ' + message;
-      pb.newPaste(msgstr, function (link) {
-        yo.postYo(link, function() {return;});
-      });
-      db.lpush('zulu', msgstr, function (reply) {
-        console.log("worked?");
-        console.log(reply);
-      });
-    }
+  return client.join('#'+chan, function() {
+    client.addListener('message', matchCheck);
   });
-  return;
 }
 
 // function ircWatch() {

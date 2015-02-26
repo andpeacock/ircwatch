@@ -2,7 +2,6 @@ var express= require('express');
 var multer= require('multer');
 var imgur= require('imgur');
 var db= require('./db');
-//var irc= require('./irc');
 var router= express.Router();
 
 /* GET home page. */
@@ -26,8 +25,9 @@ router.get('/', function (req, res) {
 });
 
 router.get('/rejoin', function (req, res) {
-  db.clearList('zulu');
-  res.send("Done");
+  db.clearList('zulu', function(){
+    res.send("Done");
+  });
 });
 
 function addPhotoList(link, cb) {
