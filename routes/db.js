@@ -4,11 +4,6 @@ var redisURL= url.parse(process.env.REDISCLOUD_URL);
 var client= redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
 client.auth(redisURL.auth.split(":")[1]);
 
-client.send_command("ltrim", ["zulu", "1", "-1"], function (err, reply) {
-  if(err) return console.log(err);
-  return;
-});
-
 function lpush(list, item, cb) {
   client.send_command("lpush", [list, item], function (err, reply) {
     if(err) return console.log(err);
@@ -16,6 +11,7 @@ function lpush(list, item, cb) {
   });
 }
 function clearList(list, cb) {
+  console.log("IN CLEAR LIST IS THIS CALLED??");
   client.send_command("ltrim", [list, "1", "-1"], function (err, reply) {
     if(err) return console.log(err);
     return cb(reply);
