@@ -15,16 +15,20 @@ router.get('/', function (req, res) {
   //     });
   //   });
   // });
+  db.getTodo(function (ret) {
+    console.log("getTodo ret: ");
+    console.log(ret);
+  });
   db.getMultiList(['imgur', 'zulu'], function (rlist) {
-    db.getTodo(function (todoRet) {
+    //db.getTodo(function (todoRet) {
       console.log(todoRet);
       res.render('index', {
         title: 'Random Shit',
         linkList: rlist[0],
         zuluList: rlist[1],
-        todo: todoRet
+        todo: ["A", "B"]
       });
-    });
+    //});
   });
 });
 
