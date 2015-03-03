@@ -38,6 +38,7 @@ function getMultiList(list, cb) {
 function getTodo(cb) {
   var todos= [];
   client.hgetall("Todo", function(err, objs) {
+    if(err) return console.log(err);
     for(var k in objs) {
       var newTodo = {
         text: objs[k]
