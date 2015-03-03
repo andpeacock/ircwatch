@@ -39,15 +39,14 @@ function getTodo(cb) {
   var todos= [];
   client.hgetall("Todo", function (err, objs) {
     if(err) return console.log(err);
-    // for(var k in objs) {
-    //   console.log("in getTodo for loop");
-    //   console.log(objs[k]);
-    //   var newTodo = {
-    //     text: objs[k]
-    //   };
-    //   todos.push(newTodo);
-    // }
-    console.log(objs);
+    for(var k in objs) {
+      console.log("in getTodo for loop");
+      console.log(objs[k]);
+      var newTodo = {
+        text: objs[k]
+      };
+      todos.push(newTodo);
+    }
     return cb(todos);
   });
 }
@@ -71,7 +70,7 @@ module.exports.lpush= lpush;
 module.exports.get50= get50;
 module.exports.getMultiList= getMultiList;
 module.exports.clearList= clearList;
-module.exports.saveTodo= getTodo;
+module.exports.getTodo= getTodo;
 module.exports.saveTodo= saveTodo;
 module.exports.removeTodo= removeTodo;
 
