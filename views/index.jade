@@ -18,6 +18,17 @@ block content
         button(type="submit", value="Upload Link", name="submit").btn.btn-default.btn-lg.btn-block Submit Link
   div.row
     div.col-md-12.col-sm-12.col-lg-12
+      form(action="/todo", method="POST").form-group#todoForm
+        input(type="text", name="newTodo").form-control
+        button(type="submit", value="New Todo", name="submit").btn.btn-default.btn-lg.btn-block New Todo
+  div.row
+    div.col-md-12.col-sm-12.col-lg-12
+      h1#todoh1 Todo
+      ul.list-group
+        each t in todo
+          li.list-group-item #{t}
+  div.row
+    div.col-md-12.col-sm-12.col-lg-12
       h1#imgurh1 Imgur Links
       div#imgurImg.list-group.row
         each l in linkList

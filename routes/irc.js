@@ -4,7 +4,7 @@ var pb= require('./pastebin');
 var db= require('./db');
 var moment= require('moment');
 
-var client = new irc.Client('irc.zulusquad.org', 'MAKETHEFORUMSLIVE', {
+var client = new irc.Client('irc.zulusquad.org', 'zzzzz', {
   channels: ['#zulu']
 });
 // client.addListener('message', function (from, to, message) {
@@ -22,11 +22,13 @@ var client = new irc.Client('irc.zulusquad.org', 'MAKETHEFORUMSLIVE', {
 client.addListener('message', matchCheck);
 client.addListener('error', function(message) {//Rejoin if error
   console.log('error: '+ message);
-  chanJoin('zulu');
+  client.join("#zulu");
+  //chanJoin('zulu');
 });
 client.addListener('part', function(channel, who, reason) {//Rejoin if bot leaves for some reason
   console.log('%s has left %s: %s', who, channel, reason);
-  chanJoin('zulu');
+  client.join("#zulu");
+  //chanJoin('zulu');
 });
 function matchCheck(from, to, message) {
   if(message.match('jezza(\d+)?')) {

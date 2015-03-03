@@ -16,10 +16,14 @@ router.get('/', function (req, res) {
   //   });
   // });
   db.getMultiList(['imgur', 'zulu'], function (rlist) {
-    res.render('index', {
-      title: 'Random Shit',
-      linkList: rlist[0],
-      zuluList: rlist[1]
+    db.getTodo(function(todoRet) {
+      console.log(todoRet);
+      res.render('index', {
+        title: 'Random Shit',
+        linkList: rlist[0],
+        zuluList: rlist[1],
+        todo: todoRet
+      });
     });
   });
 });
@@ -63,6 +67,16 @@ router.post('/link', function (req, res) {
     });
   }).catch(function (err) {
     console.error(err.message);
+  });
+});
+router.post('/todo', function (req, res) {
+  db.saveTodo(req.body.newTodo, function (reply) {
+    res.redirect('/');
+  });
+});
+router.get('/todoDel', function (req, res) {
+  db.removeTodo(req.body.todoText, function (reply) {
+    res.redirect('/');
   });
 });
 

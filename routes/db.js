@@ -12,9 +12,9 @@ function lpush(list, item, cb) {
 }
 function clearList(list, cb) {
   console.log("IN CLEAR LIST IS THIS CALLED??");
-  client.del('zulu', function(err, reply) {
+  client.del('zulu', function (err, reply) {
     console.log(reply);
-    cb(reply);
+    return cb(reply);
   });
 }
 function get50(list, cb) {
@@ -35,10 +35,41 @@ function getMultiList(list, cb) {
     });
   }
 }
+function getTodo(cb) {
+  var todos= [];
+  client.hgetall("Todo", function(err, objs) {
+    for(var k in objs) {
+      var newTodo = {
+        text: objs[k]
+      };
+      todos.push(newTodo);
+    }
+    return cb(todos);
+  });
+}
+function saveTodo(todo, cb) {
+  var newTodo = {};
+  newTodo.name = todo;
+  newTodo.id = newTodo.name.replace(" ", "-");
+  client.hset("Todo", newTodo.id, newTodo.name, function (err, reply) {
+    if(err) return console.log(err);
+    return cb(reply);
+  });
+}
+function removeTodo(todo, cb) {
+  var dt= todo.replace(" ", "-");
+  client.hdel("Todo", dt, function (err, reply) {
+    if(err) return console.log(err);
+    return cb(reply);
+  });
+}
 module.exports.lpush= lpush;
 module.exports.get50= get50;
 module.exports.getMultiList= getMultiList;
 module.exports.clearList= clearList;
+module.exports.saveTodo= getTodo;
+module.exports.saveTodo= saveTodo;
+module.exports.removeTodo= removeTodo;
 
 // function DB() {
 //   this.redisURL= url.parse(process.env.REDISCLOUD_URL),
