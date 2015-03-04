@@ -24,7 +24,7 @@ block content
   div.row
     div.col-md-12.col-sm-12.col-lg-12
       h1#todoh1 Todo
-      ul.list-group
+      ul.list-group#todoList
         each t in todo
           li.list-group-item
             p #{t.text}
@@ -39,8 +39,8 @@ block content
         a(href="#")#picMore.col-md-12.col-sm-12.col-lg-12.list-group-item Show more
   div.row
     div.col-md-12.col-sm-12
-      h1 Zulu Mentions
-      ul.list-group
+      h1#zuluh1 Zulu Mentions
+      ul.list-group#zuluList
         each z in zuluList
           li.list-group-item= z
             //-if(z.match(/http(s)?\:\/\/(\S*)/))
