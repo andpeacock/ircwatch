@@ -20,7 +20,7 @@ $(function() {
       $('.todoDel').on('click', function() {
         var tt= $(this).prev('p').text();
         console.log(tt);
-        $.get('/todoDel', {todoText: tt}, function(data) {
+        $.post('/todoDel', {todoText: tt}, function(data) {
           console.log(data);
         });
       });
