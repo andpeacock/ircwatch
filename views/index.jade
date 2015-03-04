@@ -26,7 +26,9 @@ block content
       h1#todoh1 Todo
       ul.list-group
         each t in todo
-          li.list-group-item #{t.text}
+          li.list-group-item
+            p #{t.text}
+            button(type="button").btn.btn-warning.btn-small.todoDel
   div.row
     div.col-md-12.col-sm-12.col-lg-12
       h1#imgurh1 Imgur Links

@@ -17,6 +17,12 @@ $(function() {
         else
           $('#imgurImg').slideDown(300);
       });
+      $('.todoDel').on('click', function() {
+        var tt= $(this).prev('p').text();
+        $.get('/todoDel', {todoText: tt}, function(data) {
+          console.log(data);
+        });
+      });
     }
   };
   main.init();
