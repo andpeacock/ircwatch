@@ -79,6 +79,7 @@ router.post('/todo', function (req, res) {
   });
 });
 router.get('/todoDel', function (req, res) {
+  console.log(req.body.todoText);
   db.removeTodo(req.body.todoText, function (reply) {
     res.redirect('/');
   });
