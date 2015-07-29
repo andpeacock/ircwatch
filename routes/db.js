@@ -73,32 +73,3 @@ module.exports.clearList= clearList;
 module.exports.getTodo= getTodo;
 module.exports.saveTodo= saveTodo;
 module.exports.removeTodo= removeTodo;
-
-// function DB() {
-//   this.redisURL= url.parse(process.env.REDISCLOUD_URL),
-//   this.client= redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true}),
-//   this.client.auth(redisURL.auth.split(":")[1]);
-// }
-// DB.prototype.lpush = function(list, item, cb) {
-//   this.client.send_command("lpush", [list, item], function (err, reply) {
-//     if(err) return console.log(err);
-//     return cb(reply);
-//   });
-// };
-// DB.prototype.get50 = function(list, cb) {
-//   this.client.send_command("lrange", [list, "0", "50"], function (err, reply) {
-//     if(err) return console.log(err);
-//     return cb(reply);
-//   });
-// };
-// DB.prototype.getMultiList = function(list, cb) {
-//   var retList= [];
-//   for(var i= 0; i< list.length; i++) {
-//     this.client.send_command("lrange", [list[i], "0", "50"], function (err, reply) {
-//       if(err) return console.log(err);
-//       retList.push(reply);
-//       if(retList.length== i)
-//         return cb(retList);
-//     });
-//   }
-// };

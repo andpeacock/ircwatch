@@ -13,10 +13,6 @@ $(function() {
       });
       $('#imgurh1').on('click', function() {
         headerClick('#imgurImg');
-        // if($('#imgurImg').is(':visible'))
-        //   $('#imgurImg').slideUp(300);
-        // else
-        //   $('#imgurImg').slideDown(300);
       });
       $('#todoh1').on('click', function() {
         headerClick('#todoList');

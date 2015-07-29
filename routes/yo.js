@@ -1,12 +1,12 @@
 var request= require('request');
 function Yo(user, api) {
-  this.api= "49fcd110-4652-4067-8546-fc04e15f0d21",//could change to `api` to allow better use
+  this.api= "###",//could change to `api` to allow better use
   this.postYoUrl= "https://api.justyo.co/yo/",
   this.postYoAllUrl= "https://api.justyo.co/yoall/",
   this.postAccountUrl= "https://api.justyo.co/accounts/",
   this.getCheckUserUrl= "https://api.justyo.co/check_username/",
   this.getSubCountUrl= "https://api.justyo.co/subscribers_count/",
-  this.username= "skooljester"//could change this to `user`
+  this.username= "###"//could change this to `user`
 }
 Yo.prototype.postYo = function(link, cb) {
   var ropts= {
