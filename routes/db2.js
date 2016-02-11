@@ -5,7 +5,7 @@ var connectionString = process.env.DATABASE_URL;
 var db = massive.connectSync({connectionString : connectionString});
 
 function saveLink(ulink) {
-  db.imgur.saveDoc({link : ulink}, function(err,doc){
+  return db.imgur.saveDoc({link : ulink}, function(err,doc){
     if(err)
       return console.log(err);
     console.log(doc);
@@ -13,12 +13,12 @@ function saveLink(ulink) {
 }
 
 function allLinks() {
-  db.imgur.find({}, function(err, results) {
+  return db.imgur.find({}, function(err, results) {
     if(err){
       console.log(err);
       return res.status(500).json({ success: false, data: err});
     }
-    return res.json(results);
+    return results;
   });
 }
 
