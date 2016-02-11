@@ -10,7 +10,9 @@ router.get('/', function (req, res) {
   db.getMultiList(['imgur', 'zulu'], function (rlist) {
     db.getTodo(function (todoRet) {
       console.log("above get all");
-      console.log(db2.allLinks());
+      db2.allLinks(function(res) {
+        console.log(res);
+      });
       res.render('index', {
         title: 'Random Shit',
         linkList: rlist[0],
