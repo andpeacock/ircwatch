@@ -11,13 +11,12 @@ router.get('/', function (req, res) {
     db.getTodo(function (todoRet) {
       console.log("above get all");
       db2.allLinks(function(res) {
-        console.log(res);
-      });
-      res.render('index', {
-        title: 'Random Shit',
-        linkList: rlist[0],
-        zuluList: rlist[1],
-        todo: todoRet
+        res.render('index', {
+          title: 'Random Shit',
+          linkList: res,
+          zuluList: rlist[1],
+          todo: todoRet
+        });
       });
     });
   });
