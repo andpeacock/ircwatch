@@ -29,7 +29,10 @@ router.get('/rejoin', function (req, res) {
 });
 
 function addPhotoList(link, cb) {
+  console.log("link: ");
+  console.log(link);
   db2.saveLink(link);
+  cb();
 }
 //Handling for photo uploads
 router.use('/photo', multer({ dest: './uploads/',
