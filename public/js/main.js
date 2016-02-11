@@ -20,6 +20,12 @@ $(function() {
       $('#zuluh1').on('click', function() {
         headerClick('#zuluList');
       });
+      $('.imgDel').on('click', function() {
+        var iid= $(this).data('id');
+        $.post('/imgDel', {imgid: iid}, function(data) {
+          window.location(data);
+        });
+      });
       function headerClick(bod) {
         if($(bod).is(':visible'))
           $(bod).slideUp(300);
@@ -28,7 +34,6 @@ $(function() {
       }
       $('.todoDel').on('click', function() {
         var tt= $(this).prev('p').text();
-        console.log(tt);
         $.post('/todoDel', {todoText: tt}, function(data) {
           window.location(data);
         });

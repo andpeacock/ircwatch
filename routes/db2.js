@@ -23,6 +23,15 @@ function allLinks(cb) {
   });
 }
 
+function removeLink(linkid cb) {
+  return db.imgur.destroy({id: linkid}, function(err, res) {
+    if(err)
+      return console.log(err);
+    return cb(res);
+  });
+}
+
 module.exports= router;
 module.exports.saveLink= saveLink;
 module.exports.allLinks= allLinks;
+module.exports.removeLink= removeLink;

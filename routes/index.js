@@ -53,7 +53,7 @@ router.use('/photo', multer({ dest: './uploads/',
     });
   }
 }));
-router.post('/photo', function (req, res){
+router.post('/photo', function (req, res) {
   res.redirect('/');
 });
 router.post('/link', function (req, res) {
@@ -63,6 +63,11 @@ router.post('/link', function (req, res) {
     });
   }).catch(function (err) {
     console.error(err.message);
+  });
+});
+router.post('/imgDel', function(req, res) {
+  db2.removeLink(req.body.imgid, function(reply) {
+    res.redirect('/');
   });
 });
 router.post('/todo', function (req, res) {
