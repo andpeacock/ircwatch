@@ -2,6 +2,7 @@ var express= require('express');
 var multer= require('multer');
 var imgur= require('imgur');
 var db= require('./db');
+var db2= require('./db2');
 var router= express.Router();
 
 /* GET home page. */
@@ -23,6 +24,8 @@ router.get('/', function (req, res) {
     });
   });
 });
+
+db2.saveLink("http://i.imgur.com/kbnvvZV.gif");
 
 router.get('/rejoin', function (req, res) {
   db.clearList('zulu', function(){

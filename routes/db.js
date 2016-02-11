@@ -27,7 +27,7 @@ function getMultiList(list, cb) {
   var retList= [];
   for(var i= 0; i< list.length; i++) {
     console.log(list[i]);
-    client.send_command("lrange", [list[i], "0", "50"], function (err, reply) {
+    client.send_command("lrange", [list[i], "0", "100"], function (err, reply) {
       if(err) return console.log(err);
       retList.push(reply);
       if(retList.length== list.length)
