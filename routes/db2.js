@@ -13,8 +13,11 @@ function saveLink(ulink, cb) {
   });
 }
 
+var options = {
+  order : "id"
+}
 function allLinks(cb) {
-  return db.imgur.find({}, function(err, results) {
+  return db.imgur.find({}, options, function(err, results) {
     if(err){
       console.log(err);
       return res.status(500).json({ success: false, data: err});
