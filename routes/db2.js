@@ -23,7 +23,7 @@ function allLinks(cb) {
   });
 }
 
-function removeLink(linkid cb) {
+function removeLink(linkid, cb) {
   return db.imgur.destroy({id: linkid}, function(err, res) {
     if(err)
       return console.log(err);
