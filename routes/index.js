@@ -20,7 +20,7 @@ router.get('/', function (req, res) {
     });
   });
 });
-
+/*
 var allarr= ["http://i.imgur.com/4y0Ro0J.jpg",
 "http://i.imgur.com/qBbgTBC.jpg",
 "http://i.imgur.com/4rMTOSP.jpg",
@@ -82,7 +82,7 @@ var allarr= ["http://i.imgur.com/4y0Ro0J.jpg",
 allarr.map(function(item) {
   return db2.saveLink(item);
 });
-
+*/
 router.get('/rejoin', function (req, res) {
   db.clearList('zulu', function(){
     res.send("Done");

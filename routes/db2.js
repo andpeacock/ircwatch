@@ -18,6 +18,7 @@ function allLinks() {
       console.log(err);
       return res.status(500).json({ success: false, data: err});
     }
+    console.log(results);
     return results;
   });
 }
