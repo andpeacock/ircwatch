@@ -14,7 +14,7 @@ function saveLink(ulink, cb) {
 }
 
 function allLinks(cb) {
-  return db.imgur.find({}, {order: "id asc"}, function(err, results) {
+  return db.imgur.find({}, {order: "id desc"}, function(err, results) {
     if(err){
       console.log(err);
       return res.status(500).json({ success: false, data: err});

@@ -36,6 +36,7 @@ block content
         each l in linkList
           a(href="#{l.body.link}", target="_blank").list-group-item.col-md-6.col-sm-6.col-lg-12
             img(src="#{l.body.link.replace('http://', 'https://')}").img-thumbnail
+            p= l.id
         a(href="#")#picMore.col-md-12.col-sm-12.col-lg-12.list-group-item Show more
   div.row
     div.col-md-12.col-sm-12
