@@ -13,6 +13,7 @@ router.get('/', function (req, res) {
   db.getMultiList(['imgur', 'zulu'], function (rlist) {
     db.getTodo(function (todoRet) {
       console.log(todoRet);
+      console.log(rlist[0]);
       res.render('index', {
         title: 'Random Shit',
         linkList: rlist[0],
