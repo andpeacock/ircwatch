@@ -67,18 +67,18 @@ router.post('/link', function (req, res) {
 });
 router.post('/imgDel', function(req, res) {
   db2.removeLink(req.body.imgid, function(reply) {
-    res.redirect('/');
+    return res.redirect('/');
   });
 });
 router.post('/todo', function (req, res) {
   db.saveTodo(req.body.newTodo, function (reply) {
-    res.redirect('/');
+    return res.redirect('/');
   });
 });
 router.post('/todoDel', function (req, res) {
   console.log(req.body.todoText);
   db.removeTodo(req.body.todoText, function (reply) {
-    res.redirect('/');
+    return res.redirect('/');
   });
 });
 

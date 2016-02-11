@@ -21,9 +21,11 @@ $(function() {
         headerClick('#zuluList');
       });
       $('.imgDel').on('click', function() {
+        console.log("in here");
         var iid= $(this).data('id');
         $.post('/imgDel', {imgid: iid}, function(data) {
-          window.location(data);
+          console.log("in post");
+          document.location.reload(true);
         });
       });
       function headerClick(bod) {
@@ -35,7 +37,7 @@ $(function() {
       $('.todoDel').on('click', function() {
         var tt= $(this).prev('p').text();
         $.post('/todoDel', {todoText: tt}, function(data) {
-          window.location(data);
+          document.location.reload(true);
         });
       });
     }
