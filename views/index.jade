@@ -1,0 +1,48 @@
+extends layout
+
+block content
+  div.row
+    div.col-md-12.col-sm-12
+      h1 Clear Zulu Mentions List
+      button(type="button").btn.btn-primary.btn-lg#rejoinZulu Clear Mentions
+  div.row
+    div.col-md-6.col-sm-6
+      h1 Photo
+      form(enctype="multipart/form-data", action="/photo", method="POST").form-group#uploadForm
+        input(type="file", name="userPhoto").form-control
+        button(type="submit", value="Upload Image", name="submit").btn.btn-default.btn-lg.btn-block Submit Photo
+    div.col-md-6.col-sm-6
+      h1 Link
+      form(action="/link", method="POST").form-group
+        input(type="text", name="photoLink").form-control
+        button(type="submit", value="Upload Link", name="submit").btn.btn-default.btn-lg.btn-block Submit Link
+  div.row
+    div.col-md-12.col-sm-12.col-lg-12
+      form(action="/todo", method="POST").form-group#todoForm
+        input(type="text", name="newTodo").form-control
+        button(type="submit", value="New Todo", name="submit").btn.btn-default.btn-lg.btn-block New Todo
+  div.row
+    div.col-md-12.col-sm-12.col-lg-12
+      h1#todoh1 Todo
+      ul.list-group#todoList
+        each t in todo
+          li.list-group-item
+            p #{t.text}
+            button(type="button").btn.btn-warning.btn-small.todoDel X
+  div.row
+    div.col-md-12.col-sm-12.col-lg-12
+      h1#imgurh1 Imgur Links
+      div#imgurImg.list-group.row
+        each l in linkList
+          a(href="#{l}").list-group-item.col-md-6.col-sm-6.col-lg-12
+            img(src="#{l.replace('http://', 'https://')}").img-thumbnail
+        a(href="#")#picMore.col-md-12.col-sm-12.col-lg-12.list-group-item Show more
+  div.row
+    div.col-md-12.col-sm-12
+      h1#zuluh1 Zulu Mentions
+      ul.list-group#zuluList
+        each z in zuluList
+          li.list-group-item= z
+            //-if(z.match(/http(s)?\:\/\/(\S*)/))
+        li.list-group-item
+          a(href="#")#zuluMore Show more
