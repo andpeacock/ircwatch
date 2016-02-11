@@ -12,7 +12,7 @@ function saveLink(ulink) {
   });
 }
 
-function allLinks() {
+function allLinks(cb) {
   return db.imgur.find({}, function(err, results) {
     if(err){
       console.log(err);
