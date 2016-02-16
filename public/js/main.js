@@ -7,9 +7,7 @@ $(function() {
     binding: function() {
       var self= this;
       $('#rejoinZulu').on('click', function() {
-        $.get('/rejoin', function(data) {
-          alert("rejoined");
-        });
+        $.get('/rejoin', function(data) {});
       });
       $('#imgurh1').on('click', function() {
         headerClick('#imgurImg');
@@ -21,10 +19,8 @@ $(function() {
         headerClick('#zuluList');
       });
       $('.imgDel').on('click', function() {
-        console.log("in here");
         var iid= $(this).data('id');
         $.post('/imgDel', {imgid: iid}, function(data) {
-          console.log("in post");
           document.location.reload(true);
         });
       });

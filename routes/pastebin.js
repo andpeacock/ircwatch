@@ -1,4 +1,4 @@
-var pastebin= require('pastebin')('###');
+var pastebin= require('pastebin')(process.env.PASTEBIN);
 function newPaste(cont, cb) {
   pastebin.new({title: 'test', content: cont, privacy: 1, expire:'1D'}, function (err, ret) {
     if (err) return console.log(err);

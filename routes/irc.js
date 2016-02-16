@@ -4,20 +4,24 @@ var pb= require('./pastebin');
 var db= require('./db');
 var moment= require('moment');
 
-var client = new irc.Client('irc.hello.org', 'zzzzz', {
-  channels: ['#hello']
+var chanurl= process.env.CHANURL;
+var chan= process.env.CHAN;
+var name= process.env.IRCNAME;
+
+var client = new irc.Client(chanurl, 'zzzzz', {
+  channels: [chan]
 });
 client.addListener('message', matchCheck);
 client.addListener('error', function(message) {//Rejoin if error
   console.log('error: '+ message);
-  client.join("#hello");
+  client.join(chan);
 });
 client.addListener('part', function(channel, who, reason) {//Rejoin if bot leaves for some reason
   console.log('%s has left %s: %s', who, channel, reason);
-  client.join("#hello");
+  client.join(chan);
 });
 function matchCheck(from, to, message) {
-  if(message.match('andrew(\d+)?')) {
+  if(message.match(name+'(\d+)?')) {
     var msgstr= '('+moment().format('MM/DD/YYYY HH:mm:ss')+'): '+from + ' => : ' + message;
     pb.newPaste(msgstr, function (link) {
       yo.postYo(link, function() {return;});
@@ -29,7 +33,7 @@ function matchCheck(from, to, message) {
   }
 }
 function chanJoin(chan) {
-  return client.join('#'+chan, function() {
+  return client.join(chan, function() {
     client.addListener('message', matchCheck);
   });
 }

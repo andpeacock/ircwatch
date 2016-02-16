@@ -7,7 +7,7 @@ var router= express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res) {
-  db.getMultiList(['imgur', 'zulu'], function (rlist) {
+  db.getMultiList(['zulu'], function (rlist) {
     db.getTodo(function (todoRet) {
       console.log("above get all");
       db2.allLinks(function(llist) {
