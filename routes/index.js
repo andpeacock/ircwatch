@@ -8,6 +8,9 @@ var router= express.Router();
 /* GET home page. */
 router.get('/', function (req, res) {
   db.getMultiList(['zulu'], function (rlist) {
+    console.log("rlist:");
+    console.log(rlist);
+    console.log(rlist.length);
     db.getTodo(function (todoRet) {
       console.log("above get all");
       db2.allLinks(function(llist) {
