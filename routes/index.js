@@ -14,7 +14,7 @@ router.get('/', function (req, res) {
         res.render('index', {
           title: 'Random Shit',
           linkList: llist,
-          zuluList: rlist[1],
+          zuluList: rlist[0],
           todo: todoRet
         });
       });
