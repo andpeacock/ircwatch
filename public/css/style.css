@@ -7,3 +7,6 @@ a {
 #imgurh1:hover {
   cursor: pointer;
 }
+#zuluList li {
+  overflow-x: hidden;
+}

@@ -8,11 +8,7 @@ var router= express.Router();
 /* GET home page. */
 router.get('/', function (req, res) {
   db.getMultiList(['zulu'], function (rlist) {
-    console.log("rlist:");
-    console.log(rlist);
-    console.log(rlist.length);
     db.getTodo(function (todoRet) {
-      console.log("above get all");
       db2.allLinks(function(llist) {
         res.render('index', {
           title: 'Random Shit',
@@ -32,8 +28,6 @@ router.get('/rejoin', function (req, res) {
 });
 
 function addPhotoList(link, cb) {
-  console.log("link: ");
-  console.log(link);
   db2.saveLink(link, function(doc) {
     cb();
   });
