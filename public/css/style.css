@@ -10,9 +10,16 @@ a {
 #zuluList li {
   overflow-x: hidden;
 }
-.list-group-item p {
+#todoList .list-group-item p {
   float: left;
 }
-.list-group-item button {
+#todoList .list-group-item button {
   float: right;  
+}
+#imgurImg .list-group-item button {
+  float: left;
+}
+#imgurImg .list-group-item a {
+  float: left;
+  margin-left: 20px
 }
