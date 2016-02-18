@@ -35,8 +35,8 @@ block content
       div#imgurImg.list-group.row
         each l in linkList
           li.list-group-item.clearfix
-            button(type="button", data-id="#{l.id}").btn.btn-danger.btn-small.imgDel X
-            a(href="#{l.body.link}", target="_blank").col-md-6.col-sm-6.col-lg-12
+            button(type="button", data-id="#{l.id}").btn.btn-danger.btn-small.imgDel.col-sm-1 X
+            a(href="#{l.body.link}", target="_blank").col-md-5.col-sm-5.col-lg-5
               img(src="#{l.body.link.replace('http://', 'https://')}").img-thumbnail
         a(href="#")#picMore.col-md-12.col-sm-12.col-lg-12.list-group-item Show more
   div.row
