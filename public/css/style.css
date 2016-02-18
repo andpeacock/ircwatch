@@ -10,3 +10,9 @@ a {
 #zuluList li {
   overflow-x: hidden;
 }
+.list-group-item p {
+  float: left;
+}
+.list-group-item button {
+  float: right;  
+}
