@@ -34,9 +34,9 @@ block content
       h1#imgurh1 Imgur Links
       ul#imgurImg.list-group.row.list-inline
         each l in linkList
-          li.list-group-item.clearfix.col-md-6
+          li.list-group-item.clearfix.col-lg-6.col-sm-12
             button(type="button", data-id="#{l.id}").btn.btn-danger.btn-small.imgDel.col-sm-1 X
-            a(href="#{l.body.link}", target="_blank").col-md-5.col-sm-5.col-lg-5
+            a(href="#{l.body.link}", target="_blank").col-sm-11.col-md-5.col-lg-5
               img(src="#{l.body.link.replace('http://', 'https://')}").img-thumbnail
         a(href="#")#picMore.col-md-12.col-sm-12.col-lg-12.list-group-item Show more
   div.row
