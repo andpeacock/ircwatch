@@ -21,7 +21,8 @@ block content
       div.column
         h1.title Todo
         form(action="/todo", method="POST").control.is-grouped#todoForm
-          input(type="text", name="newTodo").input
+          label(for="todoInput").label.title Todo
+          input(type="text", name="newTodo").input#todoInput
           button(type="submit", value="New Todo", name="submit").button.is-primary.is-info New Todo
   div.section
     div.container
