@@ -28,17 +28,17 @@ block content
         each t in todo
           li.list-group-item.clearfix
             p #{t.text}
-            button(type="button").btn.btn-warning.btn-small.todoDel X
-  div.columns.section
-    div.column
-      h1#imgurh1 Imgur Links
-      ul#imgurImg.columns
-        each l in linkList
-          li.column.is-quarter
-            button(type="button", data-id="#{l.id}").button.is-danger
+            button(type="button").button.is-danger.todoDel
               i.fa.fa-times
-            a(href="#{l.body.link}", target="_blank")
-              img(src="#{l.body.link.replace('http://', 'https://')}").image.is-128x128
+  div.columns.section
+    div.header
+      h1.title#imgurh1 Imgur Links
+    each l in linkList
+      div.column.is-quarter
+        button(type="button", data-id="#{l.id}").button.is-danger.imgDel
+          i.fa.fa-times
+        a(href="#{l.body.link}", target="_blank")
+          img(src="#{l.body.link.replace('http://', 'https://')}").image.is-128x128
         a(href="#")#picMore.col-md-12.col-sm-12.col-lg-12.list-group-item Show more
   div.columns.section
     div.column
