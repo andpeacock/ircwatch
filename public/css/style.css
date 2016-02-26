@@ -10,6 +10,9 @@ a {
 #zuluList li {
   overflow-x: hidden;
 }
+#zuluList .notification {
+  overflow-x: hidden;
+}
 #todoList .list-group-item p {
   float: left;
 }
