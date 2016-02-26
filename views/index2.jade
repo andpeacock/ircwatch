@@ -19,7 +19,6 @@ block content
       div.column
         label(for="todoInput").title Todo
         form(action="/todo", method="POST").control.is-grouped#todoForm
-          label(for="todoInput").title Todo
           input(type="text", name="newTodo").input#todoInput
           button(type="submit", value="New Todo", name="submit").button.is-primary.is-info New Todo
   div.section
@@ -33,7 +32,7 @@ block content
   div.section
     div.container
       h1.title#imgurh1 Imgur Links
-      ul.columns.is-multiline
+      ul.columns.is-multiline#imgurImgs
         each l in linkList
           li.column.is-quarter
             button(type="button", data-id="#{l.id}").button.is-danger.imgDel
