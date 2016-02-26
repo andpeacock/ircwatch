@@ -10,7 +10,7 @@ router.get('/', function (req, res) {
   db.getMultiList(['zulu'], function (rlist) {
     db.getTodo(function (todoRet) {
       db2.allLinks(function(llist) {
-        res.render('index', {
+        res.render('index2', {
           title: 'Random Shit',
           linkList: llist,
           zuluList: rlist[0],
