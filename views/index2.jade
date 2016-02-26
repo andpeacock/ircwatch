@@ -28,7 +28,8 @@ block content
         each t in todo
           li.notification
             button(type="button").button.is-danger.delete.todoDel
-            p #{t.text}   
+            a(href="#{t.text}", target="_blank")= t.text
+            //- p #{t.text}
   div.section
     div.container
       h1.title#imgurh1 Imgur Links
