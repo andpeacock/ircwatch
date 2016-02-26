@@ -17,9 +17,9 @@ block content
           input(type="text", name="photoLink").input
           button(type="submit", value="Upload Link", name="submit").button.is-primary.is-info Submit Link
       div.column
-        h1.title Todo
+        label(for="todoInput").title Todo
         form(action="/todo", method="POST").control.is-grouped#todoForm
-          label(for="todoInput").label.title Todo
+          label(for="todoInput").title Todo
           input(type="text", name="newTodo").input#todoInput
           button(type="submit", value="New Todo", name="submit").button.is-primary.is-info New Todo
   div.section
