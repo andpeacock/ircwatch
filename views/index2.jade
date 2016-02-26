@@ -24,7 +24,7 @@ block content
   div.section
     div.container
       h1.title#todoh1 Todo
-      ul.list-group#todoList
+      ul#todoList
         each t in todo
           li.notification
             button(type="button").button.is-danger.delete.todoDel
@@ -33,6 +33,7 @@ block content
   div.section
     div.container
       h1.title#imgurh1 Imgur Links
+        span.tag.is-dark= linkList.length
       ul.columns.is-multiline#imgurImg
         each l in linkList
           li.column.is-quarter
@@ -43,6 +44,6 @@ block content
   div.section
     div.container
       h1.title#zuluh1 Zulu Mentions
-      ul.list-group#zuluList
+      ul#zuluList
         each z in zuluList
           li.notification= z
