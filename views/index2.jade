@@ -24,23 +24,22 @@ block content
           input(type="text", name="newTodo").input
           button(type="submit", value="New Todo", name="submit").button.is-primary.is-info New Todo
   div.section
-    div.column
+    div.container
       h1.title#todoh1 Todo
       ul.list-group#todoList
         each t in todo
           li.notification
             button(type="button").button.is-danger.delete.todoDel
-              i.fa.fa-times
             p #{t.text}   
   div.section
     h1.title#imgurh1 Imgur Links
-    ul
+    ul.columns.is-multiline
       each l in linkList
-        li
+        li.column.is-quarter
           button(type="button", data-id="#{l.id}").button.is-danger.imgDel
             i.fa.fa-times
           a(href="#{l.body.link}", target="_blank")
-            img(src="#{l.body.link.replace('http://', 'https://')}").image.is-128x128
+            img(src="#{l.body.link.replace('http://', 'https://')}").image
   div.columns.section
     div.column
       h1#zuluh1 Zulu Mentions
