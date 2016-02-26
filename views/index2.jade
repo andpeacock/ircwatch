@@ -28,20 +28,19 @@ block content
       h1.title#todoh1 Todo
       ul.list-group#todoList
         each t in todo
-          li.list-group-item.clearfix
-            p #{t.text}
-            button(type="button").button.is-danger.todoDel
+          li.notification
+            button(type="button").button.is-danger.delete.todoDel
               i.fa.fa-times
+            p #{t.text}   
   div.section
-    div.header
-      h1.title#imgurh1 Imgur Links
+    h1.title#imgurh1 Imgur Links
     ul
       each l in linkList
         li
           button(type="button", data-id="#{l.id}").button.is-danger.imgDel
             i.fa.fa-times
           a(href="#{l.body.link}", target="_blank")
-            img(src="#{l.body.link.replace('http://', 'https://')}").image
+            img(src="#{l.body.link.replace('http://', 'https://')}").image.is-128x128
   div.columns.section
     div.column
       h1#zuluh1 Zulu Mentions
