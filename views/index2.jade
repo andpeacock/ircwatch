@@ -1,27 +1,29 @@
 extends layout
 
 block content
-  div.columns.section
+  div.section
+    div.container.columns
     div.column
       h1.title Clear Zulu Mentions List
       button(type="button").button.is-primary#rejoinZulu Clear Mentions
-  div.columns.section
-    div.column
-      h1.title Photo
-      form(enctype="multipart/form-data", action="/photo", method="POST").control.is-grouped#uploadForm
-        input(type="file", name="userPhoto").input
-        button(type="submit", value="Upload Image", name="submit").button.is-primary.is-info Submit Photo
-    div.column
-      h1.title Link
-      form(action="/link", method="POST").control.is-grouped
-        input(type="text", name="photoLink").input
-        button(type="submit", value="Upload Link", name="submit").button.is-primary.is-info Submit Link
-  div.columns.section
+  div.section
+    div.container.columns
+      div.column
+        h1.title Photo
+        form(enctype="multipart/form-data", action="/photo", method="POST").control.is-grouped#uploadForm
+          input(type="file", name="userPhoto").input
+          button(type="submit", value="Upload Image", name="submit").button.is-primary.is-info Submit Photo
+      div.column
+        h1.title Link
+        form(action="/link", method="POST").control.is-grouped
+          input(type="text", name="photoLink").input
+          button(type="submit", value="Upload Link", name="submit").button.is-primary.is-info Submit Link
+  div.section
     div.column
       form(action="/todo", method="POST").control.is-grouped#todoForm
         input(type="text", name="newTodo").input
         button(type="submit", value="New Todo", name="submit").button.is-primary.is-info New Todo
-  div.columns.section
+  div.section
     div.column
       h1#todoh1 Todo
       ul.list-group#todoList
@@ -35,11 +37,11 @@ block content
       h1.title#imgurh1 Imgur Links
     ul.columns
       each l in linkList
-        li.column.is-quarter
+        li.column
           button(type="button", data-id="#{l.id}").button.is-danger.imgDel
             i.fa.fa-times
           a(href="#{l.body.link}", target="_blank")
-            img(src="#{l.body.link.replace('http://', 'https://')}").image.is-128x128
+            img(src="#{l.body.link.replace('http://', 'https://')}").image
   div.columns.section
     div.column
       h1#zuluh1 Zulu Mentions
