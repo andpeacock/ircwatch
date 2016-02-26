@@ -11,7 +11,7 @@ router.get('/', function (req, res) {
     db.getTodo(function (todoRet) {
       db2.allLinks(function(llist) {
         res.render('index2', {
-          title: 'Random Shit',
+          title: 'Hub',
           linkList: llist,
           zuluList: rlist[0],
           todo: todoRet
