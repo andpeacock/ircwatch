@@ -7,7 +7,7 @@ block content
       h1.title Clear Zulu Mentions List
       button(type="button").button.is-primary#rejoinZulu Clear Mentions
   div.section
-    div.container.columns
+    div.container
       div.column
         h1.title Photo
         form(enctype="multipart/form-data", action="/photo", method="POST").control.is-grouped#uploadForm
@@ -18,14 +18,14 @@ block content
         form(action="/link", method="POST").control.is-grouped
           input(type="text", name="photoLink").input
           button(type="submit", value="Upload Link", name="submit").button.is-primary.is-info Submit Link
+      div.column
+        h1.title Todo
+        form(action="/todo", method="POST").control.is-grouped#todoForm
+          input(type="text", name="newTodo").input
+          button(type="submit", value="New Todo", name="submit").button.is-primary.is-info New Todo
   div.section
     div.column
-      form(action="/todo", method="POST").control.is-grouped#todoForm
-        input(type="text", name="newTodo").input
-        button(type="submit", value="New Todo", name="submit").button.is-primary.is-info New Todo
-  div.section
-    div.column
-      h1#todoh1 Todo
+      h1.title#todoh1 Todo
       ul.list-group#todoList
         each t in todo
           li.list-group-item.clearfix
@@ -35,9 +35,9 @@ block content
   div.section
     div.header
       h1.title#imgurh1 Imgur Links
-    ul.columns
+    ul
       each l in linkList
-        li.column
+        li
           button(type="button", data-id="#{l.id}").button.is-danger.imgDel
             i.fa.fa-times
           a(href="#{l.body.link}", target="_blank")
