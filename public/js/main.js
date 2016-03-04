@@ -25,6 +25,7 @@ $(function() {
         });
       });
       $('.imglist').on('hover', function() {
+        console.log("in hover");
         $(this).find('button').show();
       });
       function headerClick(bod) {
