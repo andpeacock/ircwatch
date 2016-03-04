@@ -25,3 +25,6 @@ h1:hover {
 #imgurImg .list-group-item a {
   float: left;
 }
+.imgDel {
+  display: none;
+}
