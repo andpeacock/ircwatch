@@ -72,15 +72,9 @@ router.post('/todo', function (req, res) {
   db2.saveTodo(req.body.newTodo, (req.body.newTodo.match(/^(http(s)?\:\/\/).+/) ? true : false), function(reply) {
     return res.redirect('/');
   });
-  /*
-  db.saveTodo(req.body.newTodo, function (reply) {
-    return res.redirect('/');
-  });
-  */
 });
 router.post('/todoDel', function (req, res) {
-  console.log(req.body.todoText);
-  db.removeTodo(req.body.todoText, function (reply) {
+  db2.removeTodo(req.body.todoText, function (reply) {
     return res.redirect('/');
   });
 });
