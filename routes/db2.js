@@ -71,6 +71,6 @@ module.exports= router;
 module.exports.saveLink= saveLink;
 module.exports.allLinks= allLinks;
 module.exports.removeLink= removeLink;
-module.exports.allTodo= allTodos;
+module.exports.allTodos= allTodos;
 module.exports.saveTodo= saveTodo;
 module.exports.removeTodo= removeTodo;
