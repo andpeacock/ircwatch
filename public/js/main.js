@@ -25,7 +25,7 @@ $(function() {
         });
       });
       $('.imglist').on('hover', function() {
-        $(this).find('.imgDel').show();
+        $(this).find('button').show();
       });
       function headerClick(bod) {
         if($(bod).is(':visible'))
