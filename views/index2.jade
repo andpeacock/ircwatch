@@ -28,10 +28,10 @@ block content
         each t in todo
           li.notification
             button(type="button", data-id="#{t.id}").button.is-danger.delete.todoDel
-            if t.link
-              a(href="#{t.text}", target="_blank")= t.text
+            if t.body.link
+              a(href="#{t.body.text}", target="_blank")= t.body.text
             else
-              p= t.text
+              p= t.body.text
             //- p #{t.text}
   div.section
     div.container
