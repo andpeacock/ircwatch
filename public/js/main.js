@@ -31,8 +31,8 @@ $(function() {
           $(bod).slideDown(300);
       }
       $('.todoDel').on('click', function() {
-        var tt= $(this).next('a').text();
-        $.post('/todoDel', {todoText: tt}, function(data) {
+        var tt= $(this).data('id');
+        $.post('/todoDel', {id: tt}, function(data) {
           document.location.reload(true);
         });
       });

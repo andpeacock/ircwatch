@@ -31,11 +31,33 @@ function removeLink(linkid, cb) {
   });
 }
 
+function allTodos(cb) {
+  return db.todo.find({}, {order: "id desc"}, function(err, results) {
+    if(err)
+      return console.log(err);
+    return cb(results);
+  });
+}
+function saveTodo(todo, link, cb) {
+  return db.todo.saveDoc({text: todo, link: link}, function(err, doc) {
+    if(err)
+      return console.log(err);
+    return cb(doc);
+  });
+}
+function removeTodo(todoid, cb) {
+  return db.todo.destroy({id: todoid}, function(err, res) {
+    if(err)
+      return console.log(err);
+    return cb(res);
+  })
+}
+
+/*
 var newDoc = {
-  text : "https://github.com/robconery/massive-js",
+  text: "https://github.com/robconery/massive-js",
   link: false
 };
-
 db.saveDoc("todo", newDoc, function(err,res){
   //the table my_documents was created on the fly
   //res is the new document with an ID created for you
@@ -43,8 +65,12 @@ db.saveDoc("todo", newDoc, function(err,res){
     return console.log(err);
   return console.log("worked");
 });
+*/
 
 module.exports= router;
 module.exports.saveLink= saveLink;
 module.exports.allLinks= allLinks;
 module.exports.removeLink= removeLink;
+module.exports.allTodo= allTodos;
+module.exports.saveTodo= saveTodo;
+module.exports.removeTodo= removeTodo;

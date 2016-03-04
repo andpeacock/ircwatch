@@ -8,7 +8,7 @@ var router= express.Router();
 /* GET home page. */
 router.get('/', function (req, res) {
   db.getMultiList(['zulu'], function (rlist) {
-    db.getTodo(function (todoRet) {
+    db2.allTodos(function (todoRet) {
       db2.allLinks(function(llist) {
         res.render('index2', {
           title: 'Hub',
@@ -68,9 +68,15 @@ router.post('/imgDel', function(req, res) {
   });
 });
 router.post('/todo', function (req, res) {
+  //req.body.newTodo.match(/^(http(s)?\:\/\/).+/) ? true : false
+  db2.saveTodo(req.body.newTodo, (req.body.newTodo.match(/^(http(s)?\:\/\/).+/) ? true : false), function(reply) {
+    return res.redirect('/');
+  });
+  /*
   db.saveTodo(req.body.newTodo, function (reply) {
     return res.redirect('/');
   });
+  */
 });
 router.post('/todoDel', function (req, res) {
   console.log(req.body.todoText);
