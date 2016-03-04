@@ -13,7 +13,7 @@ h1:hover {
 #zuluList .notification {
   overflow-x: hidden;
 }
-#todoList .list-group-item p {
+/*#todoList .list-group-item p {
   float: left;
 }
 #todoList .list-group-item button {
@@ -24,7 +24,7 @@ h1:hover {
 }
 #imgurImg .list-group-item a {
   float: left;
-}
-.imgDel {
+}*/
+.imglist .imgDel {
   display: none;
 }
