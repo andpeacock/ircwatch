@@ -74,7 +74,7 @@ router.post('/todo', function (req, res) {
   });
 });
 router.post('/todoDel', function (req, res) {
-  db2.removeTodo(req.body.todoText, function (reply) {
+  db2.removeTodo(req.body.id, function (reply) {
     return res.redirect('/');
   });
 });
