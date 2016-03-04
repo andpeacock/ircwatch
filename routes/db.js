@@ -39,8 +39,6 @@ function getTodo(cb) {
   client.hgetall("Todo", function (err, objs) {
     if(err) return console.log(err);
     for(var k in objs) {
-      console.log("in getTodo for loop");
-      console.log(objs[k]);
       var newTodo = {
         text: objs[k]
       };

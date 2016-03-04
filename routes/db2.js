@@ -31,6 +31,19 @@ function removeLink(linkid, cb) {
   });
 }
 
+var newDoc = {
+  text : "https://github.com/robconery/massive-js",
+  link: false
+};
+
+db.saveDoc("todo", newDoc, function(err,res){
+  //the table my_documents was created on the fly
+  //res is the new document with an ID created for you
+  if(err)
+    return console.log(err);
+  return console.log("worked");
+});
+
 module.exports= router;
 module.exports.saveLink= saveLink;
 module.exports.allLinks= allLinks;
