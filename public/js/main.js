@@ -24,9 +24,11 @@ $(function() {
           document.location.reload(true);
         });
       });
-      $('.imglist').on('click', function() {
-        console.log("in hover")
+      $('.imglist').hover(function() {
+        console.log("in hover");
         $(this).find('.imgDel').show();
+      },function() {
+        $(this).find('.imgDel').hide();
       });
       function headerClick(bod) {
         if($(bod).is(':visible'))
