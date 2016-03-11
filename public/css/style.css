@@ -25,6 +25,11 @@ h1:hover {
 #imgurImg .list-group-item a {
   float: left;
 }*/
+.imglist {
+  position: relative;
+}
 .imglist .imgDel {
   display: none;
+  position: absolute;
+  z-index: 5;
 }
