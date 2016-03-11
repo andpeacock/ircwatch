@@ -9,8 +9,13 @@ $(function() {
       $('#rejoinZulu').on('click', function() {
         $.get('/rejoin', function(data) {});
       });
-      $('#imgurh1').on('click', function() {
-        headerClick('#imgurImg');
+      $('#imgurh1').on({
+        click: function() {
+          headerClick('#imgurImg');
+        },
+        mouseenter: function() {
+          window.setTimeout($('.imgDel').show(), 500);
+        }
       });
       $('#todoh1').on('click', function() {
         headerClick('#todoList');
@@ -24,12 +29,14 @@ $(function() {
           document.location.reload(true);
         });
       });
+      /*
       $('.imglist').hover(function() {
         console.log("in hover");
         $(this).find('.imgDel').show();
       },function() {
         $(this).find('.imgDel').hide();
       });
+      */
       function headerClick(bod) {
         if($(bod).is(':visible'))
           $(bod).slideUp(300);
