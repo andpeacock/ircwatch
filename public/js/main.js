@@ -14,7 +14,7 @@ $(function() {
           headerClick('#imgurImg');
         },
         mouseenter: function() {
-          window.setTimeout($('.imgDel').show(), 500);
+          window.setTimeout($('.imgDel').show(), 5000);
         }
       });
       $('#todoh1').on('click', function() {
