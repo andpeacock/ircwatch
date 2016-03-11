@@ -5,7 +5,7 @@ var connectionString = process.env.DATABASE_URL;
 var db = massive.connectSync({connectionString : connectionString});
 
 function saveLink(ulink, cb) {
-  db.imgur.saveDoc({link : ulink}, function(err,doc){
+  return db.imgur.saveDoc({link : ulink}, function(err,doc){
     if(err)
       return console.log(err);
     console.log(doc);
@@ -19,6 +19,7 @@ function allLinks(cb) {
       console.log(err);
       return res.status(500).json({ success: false, data: err});
     }
+    console.log(results);
     return cb(results);
   });
 }
@@ -51,7 +52,7 @@ function removeTodo(todoid, cb) {
     if(err)
       return console.log(err);
     return cb(res);
-  })
+  });
 }
 
 /*
