@@ -38,8 +38,8 @@ block content
       ul.columns.is-multiline#imgurImg
         each l in linkList
           li.column.is-quarter.imglist
-            button(type="button", data-id="#{l.id}").button.is-danger.imgDel
-              i.fa.fa-times
+            //- button(type="button", data-id="#{l.id}").button.is-danger.imgDel
+            //-   i.fa.fa-times
             a(href="#{l.body.link}", target="_blank")
               img(src="#{l.body.link.replace('http://', 'https://')}").image
   div.section
