@@ -14,10 +14,10 @@ $(function() {
           headerClick('#imgurImg');
         },
         mouseenter: function() {
-          function showDel() {
-            $('.imgDel').show();
-          }
-          window.setTimeout(showDel, 5000);
+          // function showDel() {
+          //   $('.imgDel').show();
+          // }
+          // window.setTimeout(showDel, 5000);
         }
       });
       $('#todoh1').on('click', function() {
