@@ -3,11 +3,13 @@ extends layout
 block content
   div.section
     div.container
-      div.column
-        button(type="button").button.is-primary#rejoinZulu Clear Zulu Mentions
-        p.control.is-grouped
-          input(type="number", placeholder="Number of hours 'til shutdown").input
-          a.button.is-primary#shutdownCommand Shutdown
+      div.columns
+        div.column.is-half
+          button(type="button").button.is-primary#rejoinZulu Clear Zulu Mentions
+        div.column.is-half
+          p.control.is-grouped
+            input(type="number", placeholder="Number of hours 'til shutdown").input
+            a.button.is-primary#shutdownCommand Shutdown
       div.column
         label(for="fileInput").title Photo
         form(enctype="multipart/form-data", action="/photo", method="POST").control.is-grouped#uploadForm
