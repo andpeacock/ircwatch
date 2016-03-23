@@ -9,6 +9,11 @@ $(function() {
       $('#rejoinZulu').on('click', function() {
         $.get('/rejoin', function(data) {});
       });
+      $('#shutdownCommand').on('click', function() {
+        var num= parseFloat($('#shutdownNum').val());
+        var sec= (num*60)* 60; //(num*minutes)*seconds
+        $('#shutdownNum').val("shutdown –s –t "+ sec);
+      });
       $('#imgurh1').on({
         click: function() {
           headerClick('#imgurImg');
