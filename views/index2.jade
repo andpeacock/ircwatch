@@ -4,8 +4,10 @@ block content
   div.section
     div.container
       div.column
-        h1.title Clear Zulu Mentions List
-        button(type="button").button.is-primary#rejoinZulu Clear Mentions
+        button(type="button").button.is-primary#rejoinZulu Clear Zulu Mentions
+        p.control.is-grouped
+          input(type="number", placeholder="Number of hours 'til shutdown").input
+          a.button.is-primary#shutdownCommand Shutdown
       div.column
         label(for="fileInput").title Photo
         form(enctype="multipart/form-data", action="/photo", method="POST").control.is-grouped#uploadForm

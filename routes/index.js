@@ -43,7 +43,7 @@ router.use('/photo', multer({ dest: './uploads/',
   onFileUploadComplete: function (file) {
     imgur.uploadFile(file.path).then(function (json) {
       addPhotoList(json.data.link, function() {
-        return;
+        return res.redirect('/');
       });
     }).catch(function (err) {
       console.error(err.message);
