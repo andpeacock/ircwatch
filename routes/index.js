@@ -34,6 +34,10 @@ router.post('/encount', function(req, res) {
   console.log("got post");
   res.send("post received");
 });
+router.get('/enreset', function(req, res) {
+  encount= 0;
+  res.send("cleared");
+});
 
 function addPhotoList(link, cb) {
   db2.saveLink(link, function(doc) {
