@@ -13,6 +13,9 @@ h1:hover {
 #zuluList .notification {
   overflow-x: hidden;
 }
+#endisp:hover {
+  cursor: pointer;
+}
 /*#todoList .list-group-item p {
   float: left;
 }
