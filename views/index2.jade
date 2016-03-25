@@ -4,9 +4,11 @@ block content
   div.section
     div.container
       div.columns
-        div.column.is-half
+        div.column
           button(type="button").button.is-primary#rejoinZulu Clear Zulu Mentions
-        div.column.is-half
+        div.column
+          p Energy used #{encount} times
+        div.column
           p.control.is-grouped
             input(type="text", placeholder="Number of hours 'til shutdown").input#shutdownNum
             a.button.is-primary#shutdownCommand Shutdown

@@ -4,6 +4,7 @@ var imgur= require('imgur');
 var db= require('./db');
 var db2= require('./db2');
 var router= express.Router();
+var encount= 0;
 
 /* GET home page. */
 router.get('/', function (req, res) {
@@ -14,7 +15,8 @@ router.get('/', function (req, res) {
           title: 'Hub',
           linkList: llist,
           zuluList: rlist[0],
-          todo: todoRet
+          todo: todoRet,
+          encount: encount
         });
       });
     });
@@ -28,8 +30,9 @@ router.get('/rejoin', function (req, res) {
 });
 
 router.post('/encount', function(req, res) {
+  encount++;
   console.log("got post");
-  res.send("post received")
+  res.send("post received");
 });
 
 function addPhotoList(link, cb) {
