@@ -37,7 +37,7 @@ function allTodos(cb) {
   return db.todo.find({}, {order: "id desc"}, function(err, results) {
     if(err)
       return console.log(err);
-    console.log(results);
+    //console.log(results);
     return cb(results);
   });
 }
