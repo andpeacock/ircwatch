@@ -30,7 +30,7 @@ router.get('/rejoin', function (req, res) {
 });
 
 router.post('/encount', function(req, res) {
-  encount++;
+  encount= req.body.count;
   console.log("got post");
   res.send("post received");
 });
