@@ -21,7 +21,6 @@ function allLinks(cb) {
     }
     console.log("results: ");
     console.log("results length: "+ results.length);
-    console.log(results);
     return cb(results);
   });
 }

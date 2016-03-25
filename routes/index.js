@@ -27,6 +27,11 @@ router.get('/rejoin', function (req, res) {
   });
 });
 
+router.post('/encount', function(req, res) {
+  console.log("got post");
+  res.send("post received")
+});
+
 function addPhotoList(link, cb) {
   db2.saveLink(link, function(doc) {
     cb();
