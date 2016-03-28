@@ -4,7 +4,7 @@ var imgur= require('imgur');
 var db= require('./db');
 var db2= require('./db2');
 var router= express.Router();
-var encount= 0;
+//var encount= 0;
 
 /* GET home page. */
 router.get('/', function (req, res) {
@@ -15,8 +15,7 @@ router.get('/', function (req, res) {
           title: 'Hub',
           linkList: llist,
           zuluList: rlist[0],
-          todo: todoRet,
-          encount: encount
+          todo: todoRet
         });
       });
     });
@@ -29,11 +28,11 @@ router.get('/rejoin', function (req, res) {
   });
 });
 
-router.post('/encount', function(req, res) {
-  encount= req.body.count;
-  console.log("got post");
-  res.send("post received");
-});
+// router.post('/encount', function(req, res) {
+//   encount= req.body.count;
+//   console.log("got post");
+//   res.send("post received");
+// });
 
 function addPhotoList(link, cb) {
   db2.saveLink(link, function(doc) {
