@@ -7,7 +7,9 @@ $(function() {
     binding: function() {
       var self= this;
       $('#rejoinZulu').on('click', function() {
-        $.get('/rejoin', function(data) {});
+        $.get('/rejoin', function(data) {
+          document.location.reload(true);
+        });
       });
       $('#shutdownCommand').on('click', function() {
         var num= parseFloat($('#shutdownNum').val());
