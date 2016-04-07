@@ -104,7 +104,7 @@ router.get('/fish', function(req, res) {
       total+= doc[i].num;
     }
     for(var j= 0; j< doc.length; j++) {
-      doc[i].perc= Math.floor((doc[i].num/total)* 100)+ '%';
+      doc[j].perc= Math.floor((doc[j].num/total)* 100)+ '%';
     }
     res.set('Content-Type', 'text/html');
     res.render('fishTable', {fishList: doc});
