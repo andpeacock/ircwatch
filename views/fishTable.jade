@@ -1,1 +1,17 @@
-p Testing this
+//- name, num, loc, colour, perc
+table.table
+  thead
+    tr
+      th Name
+      th Amount Caught
+      th Location
+      th Rarity
+      th Percentage from Location
+  tbody
+    each d in fishList
+      tr
+        td= d.name
+        td= d.num
+        td= d.loc
+        td(class="#{d.colour}")= d.colour
+        td 0

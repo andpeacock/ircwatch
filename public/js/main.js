@@ -34,6 +34,7 @@ $(function() {
       $('#getFishTable').on('click', function() {
         $.get('/fish', function(data) {
           console.log(data);
+          $(this).parent().parent().append(data);
         });
       });
       $('.imgDel').on('click', function() {
