@@ -70,7 +70,7 @@ var fish= {
       "loc": data.fishLoc,
       "colour": data.fishColour
     };
-    return db.fish.saveDoc(newFish, function(err, doc) {
+    return db.fish.save(newFish, function(err, doc) {
       if(err)
         return console.log(err);
       return cb(doc);
