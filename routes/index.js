@@ -93,7 +93,7 @@ router.post('/fish', function(req, res) {
   //db2.fish.saveFish()
 });
 router.get('/fish', function(req, res) {
-  db2.fish.findLoc("Otter Town", function(res) {
+  db2.fish.findLoc("Splash Town", function(res) {
     console.log(res);
     res.render('fishTable');
   });
