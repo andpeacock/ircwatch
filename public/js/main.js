@@ -3,7 +3,7 @@ $(function() {
     init: function() {
       var self= this;
       self.binding();
-      self.notifs();
+      //self.notifs();
     },
     binding: function() {
       var self= this;
