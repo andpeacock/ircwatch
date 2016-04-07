@@ -51,16 +51,17 @@ block content
       h1.title#fishh1 Fish Tables
       //- label(for="fishInput").title Add Fish
       form(action="/fish", method="POST").control#fishForm
-        div.is-grouped.columns
-          input(type="text", name="fishName", placeholder="Fish Name").input.column#fishName
-          input(type="number", name="fishNum", placeholder="Number of Fish").input.column#fishNum
-          input(type="text", name="fishLoc", placeholder="Fish Location").input.column#fishLoc
-          span.select.column
-            select#fishType
-              option(val="green") Green
-              option(val="blue") Blue
-              option(val="gold") Gold
-          button(type="submit", value="Add Fish", name="submit").button.is-primary.is-info.column Add Fish
+        div.is-grouped
+          input(type="text", name="fishName", placeholder="Fish Name").input#fishName
+          input(type="number", name="fishNum", placeholder="Number of Fish").input#fishNum
+          input(type="text", name="fishLoc", placeholder="Fish Location").input#fishLoc
+          p.control
+            span.select
+              select#fishType
+                option(val="green") Green
+                option(val="blue") Blue
+                option(val="gold") Gold
+          button(type="submit", value="Add Fish", name="submit").button.is-primary.is-info Add Fish
       div.columns
         span.select.column
           select#locSel
