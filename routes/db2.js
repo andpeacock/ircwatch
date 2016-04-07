@@ -72,7 +72,8 @@ var fish= {
       "loc": data.fishLoc,
       "colour": data.fishColour
     };
-    db.fish.find({or: [{name: data.fishName}, {loc: data.fishLoc}]}, function(err, doc) {
+    //db.run("select * from fish where loc LIKE $1 AND name LIKE $2", ["%fruity%"])
+    db.fish.where("name=$1 AND loc=$2", [data.fishName, data.fishLoc], function(err, doc) {
       if(err)
         return console.log(err);
       console.log(doc);
