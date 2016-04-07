@@ -94,7 +94,7 @@ router.post('/fish', function(req, res) {
   console.log(req.body);
   db2.fish.saveFish(req.body, function(doc) {
     console.log(doc);
-    res.send("done");
+    return res.redirect('/');
   });
 });
 

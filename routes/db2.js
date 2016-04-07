@@ -64,6 +64,13 @@ var fish= {
      * fishLoc
      * fishColour
     */
+    db.fish.find({loc: "test100"}, function(err, doc) {
+      if(err)
+        console.log(err);
+      console.log(doc);
+    });
+    return;
+    /*
     var newFish = {
       "name": data.fishName,
       "num": parseInt(data.fishNum),
@@ -75,6 +82,7 @@ var fish= {
         return console.log(err);
       return cb(doc);
     });
+    */
   },
   findLoc: function(spot, cb) {
     return db.fish.find({loc: spot}, function(err, results) {
