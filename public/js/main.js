@@ -31,6 +31,11 @@ $(function() {
       $('#fishh1').on('click', function() {
         headerClick('#fishForm');
       });
+      $('#getFishTable').on('click', function() {
+        $.get('/fish', function(data) {
+          console.log(data);
+        });
+      });
       $('.imgDel').on('click', function() {
         var iid= $(this).data('id');
         $.post('/imgDel', {imgid: iid}, function(data) {
