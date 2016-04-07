@@ -78,6 +78,7 @@ var fish= {
     });
   }
 };
+//This is actually a horrible way to do this just make it in postico
 /*
 var newDoc = {
   name: "Piranha",

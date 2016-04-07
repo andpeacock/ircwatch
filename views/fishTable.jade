@@ -13,5 +13,11 @@ table.table
         td= d.name
         td= d.num
         td= d.loc
-        td(class="#{d.colour}")= d.colour
-        td 0
+        if d.colour== 'gold'
+          td.is-warning= d.colour
+        else if d.colour== 'blue'
+          td.is-info= d.colour
+        else
+          td.is-success= d.colour
+        //- td(class="#{d.colour}")= d.colour
+        td d.perc

@@ -99,6 +99,13 @@ router.post('/fish', function(req, res) {
 router.get('/fish', function(req, res) {
   db2.fish.findLoc('Splash Town', function(doc) {
     console.log(doc);
+    var total= 0;
+    for(var i= 0; i< doc.length; i++) {
+      total+= doc[i].num;
+    }
+    for(var j= 0; j< doc.length; j++) {
+      doc[i].perc= Math.floor((doc[i].num/total)* 100)+ '%';
+    }
     res.set('Content-Type', 'text/html');
     res.render('fishTable', {fishList: doc});
   });
