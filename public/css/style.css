@@ -39,3 +39,33 @@ h1:hover {
 .imglist:hover .imgDel {
   display: block;
 }
+td.is-warning {
+  background: #fce473;
+  border-color: transparent;
+  color: rgba(0,0,0,0.5);
+}
+td.is-warning:hover {
+  background: #fbda41;
+  border-color: transparent;
+  color: rgba(0,0,0,0.5);
+}
+td.is-info {
+  background: #42afe3;
+  border-color: transparent;
+  color: #fff;
+}
+td.is-info:hover {
+  background: #1f99d3;
+  border-color: transparent;
+  color: #fff;
+}
+td.is-success {
+  background: #97cd76;
+  border-color: transparent;
+  color: #fff;
+}
+td.is-success:hover {
+  background: #7bbf51;
+  border-color: transparent;
+  color: #fff;
+}
