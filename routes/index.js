@@ -77,7 +77,6 @@ router.post('/imgDel', function(req, res) {
 });
 //TODO Stuff
 router.post('/todo', function (req, res) {
-  //req.body.newTodo.match(/^(http(s)?\:\/\/).+/) ? true : false
   db2.saveTodo(req.body.newTodo, (req.body.newTodo.match(/^(http(s)?\:\/\/).+/) ? true : false), function(reply) {
     return res.redirect('/');
   });
@@ -97,8 +96,9 @@ router.post('/fish', function(req, res) {
 });
 
 router.get('/fish', function(req, res) {
-  console.log(req.params);
+  console.log("req.body");
   console.log(req.body);
+  console.log("req.query");
   console.log(req.query);
   db2.fish.findLoc('Splash Town', function(doc) {
     console.log(doc);
