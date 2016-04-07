@@ -64,28 +64,34 @@ var fish= {
      * fishLoc
      * fishColour
     */
-    db.fish.find({name: data.fishName, loc: data.fishLoc}, function(err, doc) {
-      if(err)
-        return console.log(err);
-      
-      var newFish = {
-        "name": data.fishName,
-        "num": parseInt(data.fishNum),
-        "loc": data.fishLoc,
-        "colour": data.fishColour
-      };
-      if(doc.length> 0) {
-        newFish.num+= doc.num;
-        newFish.id= doc.id;
-      }
-      else {
-        console.log("in else");
-      }
-      return db.fish.save(newFish, function(err, doc) {
+    db.fish.find(find({
+      or: [{
+        "loc": data.fishLoc
+      }, {
+        "name": data.fishName
+      }]
+    }, function(err, doc) {
         if(err)
           return console.log(err);
-        return cb(doc);
-      });
+        console.log(doc);
+        var newFish = {
+          "name": data.fishName,
+          "num": parseInt(data.fishNum),
+          "loc": data.fishLoc,
+          "colour": data.fishColour
+        };
+        if(doc.length> 0) {
+          newFish.num+= doc.num;
+          newFish.id= doc.id;
+        }
+        else {
+          console.log("in else");
+        }
+        return db.fish.save(newFish, function(err, doc) {
+          if(err)
+            return console.log(err);
+          return cb(doc);
+        });
     });
     return;
     /*
