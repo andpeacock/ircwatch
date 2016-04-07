@@ -76,11 +76,11 @@ var fish= {
     db.fish.where("name=$1 AND loc=$2", [data.fishName, data.fishLoc], function(err, doc) {
       if(err)
         return console.log(err);
+      console.log("in where");
       console.log(doc);
-      
       if(doc.length> 0) {
-        newFish.num+= doc.num;
-        newFish.id= doc.id;
+        newFish.num+= doc[0].num;
+        newFish.id= doc[0].id;
       }
       else {
         console.log("in else");
