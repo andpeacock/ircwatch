@@ -95,12 +95,12 @@ router.post('/fish', function(req, res) {
   });
 });
 
+db2.fish.getLocList(function(doc) {
+  console.log(doc);
+});
+
 router.get('/fish', function(req, res) {
-  console.log("req.body");
-  console.log(req.body);
-  console.log("req.query");
-  console.log(req.query);
-  db2.fish.findLoc('Splash Town', function(doc) {
+  db2.fish.findLoc(req.query.loc, function(doc) {
     console.log(doc);
     var total= 0;
     for(var i= 0; i< doc.length; i++) {

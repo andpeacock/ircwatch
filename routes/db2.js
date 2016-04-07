@@ -76,6 +76,13 @@ var fish= {
         return console.log(err);
       return cb(results);
     });
+  },
+  getLocList: function(cb) {
+    db.run("select distinct loc from fish", function(err, res){
+      if(err)
+        return console.log(err);
+      return cb(results);
+    });
   }
 };
 //This is actually a horrible way to do this just make it in postico
