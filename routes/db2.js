@@ -64,16 +64,28 @@ var fish= {
      * fishLoc
      * fishColour
     */
-    db.fish.find({loc: "test100"}, function(err, doc) {
+    db.fish.find({name: data.fishName, loc: data.fishLoc}, function(err, doc) {
       if(err)
-        console.log(err);
-      console.log(doc);
+        return console.log(err);
+      
+      var newFish = {
+        "name": data.fishName,
+        "num": parseInt(data.fishNum),
+        "loc": data.fishLoc,
+        "colour": data.fishColour
+      };
       if(doc.length> 0) {
-        console.log("in if");
+        newFish.num+= doc.num;
+        newFish.id= doc.id;
       }
       else {
         console.log("in else");
       }
+      return db.fish.save(newFish, function(err, doc) {
+        if(err)
+          return console.log(err);
+        return cb(doc);
+      });
     });
     return;
     /*
