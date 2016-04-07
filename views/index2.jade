@@ -67,7 +67,8 @@ block content
         p.control
           span.select
             select#locSel
-              option(val="Splash Town") Splash Town
+              for loc in loclist
+                option(val="#{loc.loc}")= loc.loc
         button(value="Select Location", name="Select Location").button.is-primary.is-info#getFishTable Select Location
   div.section
     div.container

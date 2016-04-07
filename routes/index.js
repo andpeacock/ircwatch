@@ -11,11 +11,14 @@ router.get('/', function (req, res) {
   db.getMultiList(['zulu'], function (rlist) {
     db2.allTodos(function (todoRet) {
       db2.allLinks(function(llist) {
-        res.render('index2', {
-          title: 'Hub',
-          linkList: llist,
-          zuluList: rlist[0],
-          todo: todoRet
+        db2.fish.getLocList(function(loclist) {
+          res.render('index2', {
+            title: 'Hub',
+            linkList: llist,
+            zuluList: rlist[0],
+            todo: todoRet,
+            loclist: loclist
+          });
         });
       });
     });
