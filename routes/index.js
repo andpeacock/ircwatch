@@ -34,6 +34,7 @@ router.get('/rejoin', function (req, res) {
 //   res.send("post received");
 // });
 
+//PHOTO STUFF
 function addPhotoList(link, cb) {
   db2.saveLink(link, function(doc) {
     cb();
@@ -74,6 +75,7 @@ router.post('/imgDel', function(req, res) {
     return res.redirect('/');
   });
 });
+//TODO Stuff
 router.post('/todo', function (req, res) {
   //req.body.newTodo.match(/^(http(s)?\:\/\/).+/) ? true : false
   db2.saveTodo(req.body.newTodo, (req.body.newTodo.match(/^(http(s)?\:\/\/).+/) ? true : false), function(reply) {
@@ -84,6 +86,14 @@ router.post('/todoDel', function (req, res) {
   db2.removeTodo(req.body.id, function (reply) {
     return res.redirect('/');
   });
+});
+//FISH STUFF
+router.post('/fish', function(req, res) {
+  console.log(req.body);
+  //db2.fish.saveFish()
+});
+router.get('/fish', function(req, res) {
+
 });
 
 module.exports = router;

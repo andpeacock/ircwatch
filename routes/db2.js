@@ -63,8 +63,15 @@ var fish= {
         return console.log(err);
       return cb(doc);
     });
+  },
+  findLoc: function(loc) {
+    return db.fish.find({loc: loc}, {order: "id desc"}, function(err, results) {
+      if(err)
+        return console.log(err);
+      return cb(results);
+    });
   }
-}
+};
 /*
 var newDoc = {
   name: "Piranha",
@@ -88,3 +95,4 @@ module.exports.removeLink= removeLink;
 module.exports.allTodos= allTodos;
 module.exports.saveTodo= saveTodo;
 module.exports.removeTodo= removeTodo;
+module.exports.fish= fish;

@@ -28,6 +28,9 @@ $(function() {
       $('#zuluh1').on('click', function() {
         headerClick('#zuluList');
       });
+      $('#fishh1').on('click', function() {
+        headerClick('#fishForm');
+      });
       $('.imgDel').on('click', function() {
         var iid= $(this).data('id');
         $.post('/imgDel', {imgid: iid}, function(data) {
