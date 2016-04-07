@@ -47,11 +47,11 @@ $(function() {
         });
       });
     },
-    notifs: function() {
+    notifs: function(text) {
       // Notification.requestPermission().then(function(result) {
       //   console.log(result);
       // });
-      var n = new Notification("testing", {tag: 'soManyNotification'});
+      return new Notification(text, {tag: 'soManyNotification'});
     }
   };
   main.init();

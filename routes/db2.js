@@ -56,19 +56,21 @@ function removeTodo(todoid, cb) {
   });
 }
 
-/*
+
 var newDoc = {
-  text: "https://github.com/robconery/massive-js",
-  link: false
+  name: "Piranha",
+  num: 7,
+  loc: "Splash Town",
+  colour: "gold"
 };
-db.saveDoc("todo", newDoc, function(err,res){
+db.saveDoc("fish", newDoc, function(err,res){
   //the table my_documents was created on the fly
   //res is the new document with an ID created for you
   if(err)
     return console.log(err);
   return console.log("worked");
 });
-*/
+
 
 module.exports= router;
 module.exports.saveLink= saveLink;

@@ -48,6 +48,21 @@ block content
               img(src="#{l.body.link.replace('http://', 'https://')}").image
   div.section
     div.container
+      h1.title#fishh1 Fish Tables
+      div.column
+        //- label(for="fishInput").title Add Fish
+        form(action="/fish", method="POST").control#fishForm
+          div.is-grouped
+            input(type="text", name="fishName").input#fishName
+            input(type="number", name="fishNum").input#fishNum
+            input(type="text", name="fishLoc").input#fishLoc
+            select#fishType
+              option(val="green") Green
+              option(val="blue") Blue
+              option(val="gold") Gold
+          button(type="submit", value="Add Fish", name="submit").button.is-primary.is-info Add Fish
+  div.section
+    div.container
       h1.title#zuluh1 Zulu Mentions
       ul#zuluList
         each z in zuluList
