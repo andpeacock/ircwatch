@@ -68,7 +68,7 @@ var fish= {
       if(err)
         console.log(err);
       console.log(doc);
-      if(doc) {
+      if(doc.length> 0) {
         console.log("in if");
       }
       else {
