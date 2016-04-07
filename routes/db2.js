@@ -64,7 +64,7 @@ var fish= {
      * fishLoc
      * fishColour
     */
-    db.fish.find(find({
+    db.fish.find({
       or: [{
         "loc": data.fishLoc
       }, {
