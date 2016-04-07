@@ -39,6 +39,3 @@ h1:hover {
 .imglist:hover .imgDel {
   display: block;
 }
-#fishColour {
-  display: none;
-}

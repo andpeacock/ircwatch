@@ -31,9 +31,6 @@ $(function() {
       $('#fishh1').on('click', function() {
         headerClick('#fishForm');
       });
-      $('#fishType').on('change', function() {
-        $('#fishColour').val($(this).val());
-      });
       $('#getFishTable').on('click', function() {
         $.get('/fish', function(data) {
           console.log(data);
