@@ -69,7 +69,7 @@ var fish= {
     db.fish.find([{name: data.fishName}, {loc: data.fishLoc}], function(err, doc) {
       if(err)
         return console.log(err);
-      
+      console.log(doc);
       var newFish = {
         "name": data.fishName,
         "num": parseInt(data.fishNum),
