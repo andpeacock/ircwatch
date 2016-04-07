@@ -56,7 +56,7 @@ function removeTodo(todoid, cb) {
   });
 }
 
-
+/*
 var newDoc = {
   name: "Piranha",
   num: 7,
@@ -70,7 +70,7 @@ db.saveDoc("fish", newDoc, function(err,res){
     return console.log(err);
   return console.log("worked");
 });
-
+*/
 
 module.exports= router;
 module.exports.saveLink= saveLink;
