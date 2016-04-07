@@ -64,8 +64,8 @@ var fish= {
       return cb(doc);
     });
   },
-  findLoc: function(loc, cb) {
-    return db.fish.find({}, {order: "id desc"}, function(err, results) {
+  findLoc: function(spot, cb) {
+    return db.fish.where({"loc=$1"}, [spot], {order: "id desc"}, function(err, results) {
       if(err)
         return console.log(err);
       return cb(results);
