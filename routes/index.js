@@ -90,7 +90,10 @@ router.post('/todoDel', function (req, res) {
 //FISH STUFF
 router.post('/fish', function(req, res) {
   console.log(req.body);
-  //db2.fish.saveFish()
+  db2.fish.saveFish(req.body, function(doc) {
+    console.log(doc);
+    res.send("done");
+  });
 });
 
 router.get('/fish', function(req, res) {
