@@ -98,10 +98,6 @@ router.post('/fish', function(req, res) {
   });
 });
 
-db2.fish.getLocList(function(doc) {
-  console.log(doc);
-});
-
 router.get('/fish', function(req, res) {
   db2.fish.findLoc(req.query.loc, function(doc) {
     console.log(doc);

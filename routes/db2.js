@@ -64,7 +64,13 @@ var fish= {
      * fishLoc
      * fishColour
     */
-    return db.fish.saveDoc({name: data.fishName, num: parseInt(data.fishNum), loc: data.fishLoc, colour: data.fishColour}, function(err, doc) {
+    var newFish = {
+      name : data.fishName,
+      num : parseInt(data.fishNum),
+      loc : data.fishLoc,
+      colour: data.fishColour
+    };
+    return db.fish.saveDoc(newFish, function(err, doc) {
       if(err)
         return console.log(err);
       return cb(doc);
