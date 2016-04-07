@@ -66,16 +66,17 @@ var fish= {
     */
     //db.fish.find({or: [{"loc": data.fishLoc}, {"name": data.fishName}]}, 
     //db.fish.find({name: data.fishName, loc: data.fishLoc}
-    db.fish.find([{name: data.fishName}, {loc: data.fishLoc}], function(err, doc) {
+    var newFish = {
+      "name": data.fishName,
+      "num": parseInt(data.fishNum),
+      "loc": data.fishLoc,
+      "colour": data.fishColour
+    };
+    db.fish.find({or: [{name: data.fishName}, {loc: data.fishLoc}]}, function(err, doc) {
       if(err)
         return console.log(err);
       console.log(doc);
-      var newFish = {
-        "name": data.fishName,
-        "num": parseInt(data.fishNum),
-        "loc": data.fishLoc,
-        "colour": data.fishColour
-      };
+      
       if(doc.length> 0) {
         newFish.num+= doc.num;
         newFish.id= doc.id;
@@ -89,7 +90,6 @@ var fish= {
         return cb(doc);
       });
     });
-    return;
     /*
     var newFish = {
       "name": data.fishName,
