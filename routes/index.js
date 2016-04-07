@@ -97,6 +97,7 @@ router.post('/fish', function(req, res) {
 });
 
 router.get('/fish', function(req, res) {
+  console.log(req.params.loc)
   db2.fish.findLoc('Splash Town', function(doc) {
     console.log(doc);
     var total= 0;

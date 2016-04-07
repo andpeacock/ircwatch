@@ -32,8 +32,9 @@ $(function() {
         headerClick('#fishForm');
       });
       $('#getFishTable').on('click', function() {
-        $.get('/fish', function(data) {
-          console.log(data);
+        console.log($('#locSel').val());
+        $.get('/fish', {loc: "Splash Town"} function(data) {
+          $('#fishTable').remove();
           $('#getFishTable').parent().parent().append(data);
         });
       });
