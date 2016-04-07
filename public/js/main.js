@@ -33,7 +33,7 @@ $(function() {
       });
       $('#getFishTable').on('click', function() {
         console.log($('#locSel').val());
-        $.get('/fish', {loc: "Splash Town"} function(data) {
+        $.get('/fish', {loc: "Splash Town"}, function(data) {
           $('#fishTable').remove();
           $('#getFishTable').parent().parent().append(data);
         });
