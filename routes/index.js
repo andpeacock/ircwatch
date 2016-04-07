@@ -31,12 +31,6 @@ router.get('/rejoin', function (req, res) {
   });
 });
 
-// router.post('/encount', function(req, res) {
-//   encount= req.body.count;
-//   console.log("got post");
-//   res.send("post received");
-// });
-
 //PHOTO STUFF
 function addPhotoList(link, cb) {
   db2.saveLink(link, function(doc) {
@@ -91,16 +85,12 @@ router.post('/todoDel', function (req, res) {
 });
 //FISH STUFF
 router.post('/fish', function(req, res) {
-  console.log(req.body);
   db2.fish.saveFish(req.body, function(doc) {
-    console.log(doc);
     return res.redirect('/');
   });
 });
-
 router.get('/fish', function(req, res) {
   db2.fish.findLoc(req.query.loc, function(doc) {
-    console.log(doc);
     var total= 0;
     for(var i= 0; i< doc.length; i++) {
       total+= doc[i].num;

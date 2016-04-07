@@ -64,46 +64,30 @@ var fish= {
      * fishLoc
      * fishColour
     */
-    //db.fish.find({or: [{"loc": data.fishLoc}, {"name": data.fishName}]}, 
-    //db.fish.find({name: data.fishName, loc: data.fishLoc}
     var newFish = {
       "name": data.fishName,
       "num": parseInt(data.fishNum),
       "loc": data.fishLoc,
       "colour": data.fishColour
     };
-    //db.run("select * from fish where loc LIKE $1 AND name LIKE $2", ["%fruity%"])
+    //Check whether or not this fish already exists in this location
     db.fish.where("name=$1 AND loc=$2", [data.fishName, data.fishLoc], function(err, doc) {
       if(err)
         return console.log(err);
-      console.log("in where");
-      console.log(doc);
+      //if yes, update the number and set `newFish`'s id to the one that already exists
       if(doc.length> 0) {
         newFish.num+= doc[0].num;
         newFish.id= doc[0].id;
       }
-      else {
+      else
         console.log("in else");
-      }
+      //if not, then just create `newFish`
       return db.fish.save(newFish, function(err, doc) {
         if(err)
           return console.log(err);
         return cb(doc);
       });
     });
-    /*
-    var newFish = {
-      "name": data.fishName,
-      "num": parseInt(data.fishNum),
-      "loc": data.fishLoc,
-      "colour": data.fishColour
-    };
-    return db.fish.save(newFish, function(err, doc) {
-      if(err)
-        return console.log(err);
-      return cb(doc);
-    });
-    */
   },
   findLoc: function(spot, cb) {
     return db.fish.find({loc: spot}, function(err, results) {
