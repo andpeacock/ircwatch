@@ -78,7 +78,7 @@ var fish= {
     });
   },
   getLocList: function(cb) {
-    db.run("select distinct loc from fish", function(err, res){
+    db.run("select distinct loc from fish", function(err, results){
       if(err)
         return console.log(err);
       return cb(results);
