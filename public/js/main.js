@@ -3,6 +3,7 @@ $(function() {
     init: function() {
       var self= this;
       self.binding();
+      self.notifs();
     },
     binding: function() {
       var self= this;
@@ -44,6 +45,11 @@ $(function() {
         $.post('/todoDel', {id: tt}, function(data) {
           document.location.reload(true);
         });
+      });
+    },
+    notifs: function() {
+      Notification.requestPermission().then(function(result) {
+        console.log(result);
       });
     }
   };
