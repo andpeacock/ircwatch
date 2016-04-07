@@ -71,7 +71,7 @@ var fish= {
     });
   },
   findLoc: function(spot, cb) {
-    return db.fish.find({'loc': 'Splash Town'}, function(err, results) {
+    return db.fish.find({loc: spot}, function(err, results) {
       if(err)
         return console.log(err);
       return cb(results);
