@@ -57,8 +57,14 @@ function removeTodo(todoid, cb) {
 }
 
 var fish= {
-  saveFish: function(name, num, loc, colour, cb) {
-    return db.fish.saveDoc({name: name, num: parseInt(num), loc: loc, colour: colour}, function(err, doc) {
+  saveFish: function(data, cb) {
+    /*
+     * fishName 
+     * fishNum 
+     * fishLoc
+     * fishColour
+    */
+    return db.fish.saveDoc({name: data.fishName, num: parseInt(data.fishNum), loc: data.fishLoc, colour: data.fishColour}, function(err, doc) {
       if(err)
         return console.log(err);
       return cb(doc);
