@@ -27,27 +27,6 @@ block content
           button(type="submit", value="New Todo", name="submit").button.is-primary.is-info New Todo
   div.section
     div.container
-      h1.title#todoh1 Todo
-      ul#todoList
-        each t in todo
-          li.notification
-            button(type="button", data-id="#{t.id}").button.is-danger.delete.todoDel
-            if t.body.link
-              a(href="#{t.body.text}", target="_blank")= t.body.text
-            else
-              p= t.body.text
-  div.section
-    div.container
-      h1.title#imgurh1 Imgur Links
-      ul.columns.is-multiline#imgurImg
-        each l in linkList
-          li.column.is-quarter.imglist
-            //- button(type="button", data-id="#{l.id}").button.is-danger.imgDel
-            //-   i.fa.fa-times
-            a(href="#{l.body.link}", target="_blank")
-              img(src="#{l.body.link.replace('http://', 'https://')}").image
-  div.section
-    div.container
       h1.title#fishh1 Fish Tables
       label(for="fishName").title Add Fish
       form(action="/fish", method="POST").control.is-grouped#fishForm
@@ -70,6 +49,27 @@ block content
               for loc in loclist
                 option(val="#{loc.loc}")= loc.loc
         button(value="Select Location", name="Select Location").button.is-primary.is-info#getFishTable Select Location
+  div.section
+    div.container
+      h1.title#todoh1 Todo
+      ul#todoList
+        each t in todo
+          li.notification
+            button(type="button", data-id="#{t.id}").button.is-danger.delete.todoDel
+            if t.body.link
+              a(href="#{t.body.text}", target="_blank")= t.body.text
+            else
+              p= t.body.text
+  div.section
+    div.container
+      h1.title#imgurh1 Imgur Links
+      ul.columns.is-multiline#imgurImg
+        each l in linkList
+          li.column.is-quarter.imglist
+            //- button(type="button", data-id="#{l.id}").button.is-danger.imgDel
+            //-   i.fa.fa-times
+            a(href="#{l.body.link}", target="_blank")
+              img(src="#{l.body.link.replace('http://', 'https://')}").image
   div.section
     div.container
       h1.title#zuluh1 Zulu Mentions
