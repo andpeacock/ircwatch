@@ -64,6 +64,7 @@ var fish= {
      * fishLoc
      * fishColour
     */
+    var self= this;
     var newFish = {
       "name": data.fishName,
       "num": parseInt(data.fishNum),
@@ -107,7 +108,7 @@ var fish= {
     db.fish.find({name: fish}, function(err, results) {
       if(err)
         return console.log(err);
-      console.log(results);
+      return results[0].colour;
     });
   }
 };
