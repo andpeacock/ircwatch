@@ -102,6 +102,13 @@ var fish= {
         return console.log(err);
       return cb(results);
     });
+  },
+  getColour: function(fish) {
+    db.fish.find({name: fish}, function(err, results) {
+      if(err)
+        return console.log(err);
+      console.log(results);
+    });
   }
 };
 //This is actually a horrible way to do this just make it in postico

@@ -84,6 +84,7 @@ router.post('/todoDel', function (req, res) {
   });
 });
 //FISH STUFF
+db2.fish.getColour("Piranha");
 router.post('/fish', function(req, res) {
   db2.fish.saveFish(req.body, function(doc) {
     return res.redirect('/');
