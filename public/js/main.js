@@ -4,6 +4,7 @@ $(function() {
       var self= this;
       self.binding();
       //self.notifs();
+      //X*0.65-Y //profit from selling on the market
     },
     binding: function() {
       var self= this;
