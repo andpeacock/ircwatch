@@ -101,11 +101,16 @@ router.use('/fishpic', multer({ dest: './uploads/',
       var img= img1;
       Jimp.read(file.path, function (err, image) {
         //change greyscale and scale to be what I need instead
-        image.crop(49, 128, 41, 41, function(err, image) {
+        image.crop(48, 128, 41, 41, function(err, image) {
           var img2= image;
-          var diff = Jimp.diff(img, img2); // threshold ranges 0-1 (default: 0.1)
+          console.log(img2);
+          console.log(img);
+          var diff= Jimp.diff(img2, img); // threshold ranges 0-1 (default: 0.1)
           //diff.image;   // a Jimp image showing differences
           //diff.percent;
+          console.log("diff percent: "+ diff.percent);
+          console.log(diff);
+          /*
           (diff.percent < 0.15) ? console.log("in if match") : console.log("in else no match");
           image.write(file.path, function(err, image) {
             imgur.uploadFile(file.path).then(function (json) {
@@ -116,6 +121,7 @@ router.use('/fishpic', multer({ dest: './uploads/',
               console.error(err.message);
             });
           });
+          *
         });
       });
     });
