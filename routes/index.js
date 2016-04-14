@@ -4,6 +4,7 @@ var imgur= require('imgur');
 var db= require('./db');
 var db2= require('./db2');
 var router= express.Router();
+var histogram = require('histogram'); //testing histogram for comparison
 //var encount= 0;
 
 //var Jimp = require('jimp'); //for cropping images
@@ -49,6 +50,9 @@ router.use('/photo', multer({ dest: './uploads/',
     console.log(file.originalname + ' is starting ...')
   },
   onFileUploadComplete: function (file) {
+    histogram(file || Buffer, function (err, data) {
+      console.log(data);
+    });
     imgur.uploadFile(file.path).then(function (json) {
       addPhotoList(json.data.link, function() {
         return res.redirect('/');
