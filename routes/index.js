@@ -96,39 +96,44 @@ router.use('/fishpic', multer({ dest: './uploads/',
   },
   onFileUploadComplete: function (file) {
     //get initial image from url
-    Jimp.read("http://i.imgur.com/wTeLNnL.jpg", function (err, img1) {
+    //http://i.imgur.com/wTeLNnL.jpg --url for wep stone
+    //http://i.imgur.com/sfoReqe.jpg --url for tree belt
+    var totalcount= 0;
+    var truecount= 0;
+    Jimp.read("http://i.imgur.com/sfoReqe.jpg", function (err, img1) {
       // do stuff with the image (if no exception)
       var img= img1;
       Jimp.read(file.path, function (err, image) {
         //change greyscale and scale to be what I need instead
         //48, 128
-        image.crop(134, 2, 41, 41, function(err, image) {
-          var img2= image;
-          console.log(img2);
-          console.log(img);
-          var distance = Jimp.distance(img, img2);
-          var diff = Jimp.diff(img, img2); // threshold ranges 0-1 (default: 0.1)
-          //diff.image;   // a Jimp image showing differences
-          //diff.percent;
+        function rcrop(x, y, image, cb) {
+          image.crop(x, y, 41, 41, function(err, image) {
+            var img2= image;
+            var distance = Jimp.distance(img, img2);
+            var diff = Jimp.diff(img, img2); // threshold ranges 0-1 (default: 0.1)
+            var retbool= false;
 
-          //134, 2
-          console.log("diff percent: "+ diff.percent);
-          console.log(diff);
-          console.log("distance: "+ distance);
-          (distance < 0.15 || diff.percent < 0.2) ? console.log("in if match") : console.log("in else no match");
-          
-          (diff.percent < 0.15) ? console.log("in if match") : console.log("in else no match");
-          image.write(file.path, function(err, image) {
-            imgur.uploadFile(file.path).then(function (json) {
-              addPhotoList(json.data.link, function() {
-                return;
-              });
-            }).catch(function (err) {
-              console.error(err.message);
-            });
+            //134, 2
+            console.log("diff percent: "+ diff.percent);
+            console.log(diff);
+            console.log("distance: "+ distance);
+            //(distance < 0.15 || diff.percent < 0.2) ? console.log("in if match") : console.log("in else no match");
+            //(diff.percent < 0.15) ? console.log("in if match") : console.log("in else no match");
+            if(distance < 0.15 || diff.percent < 0.2)
+              retbool= true;
+            else
+              retbool= false;
+            cb(x, y, retbool);
           });
-          
-        });
+        }
+        // rcrop(5, 2, image);
+        // while(totalcount< 8) {
+        //   totalcount++;
+        //   if(distance < 0.15 || diff.percent < 0.2) {
+        //     truecount++;
+        //     console.log("in if match")
+        //   }
+        // }
       });
     });
     //move 5 left, 2 down for start then+ 41
