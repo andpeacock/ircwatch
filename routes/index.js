@@ -72,7 +72,13 @@ router.post('/link', function (req, res) {
       image.scale(0.5, function (err, image) {
         if(err)
           console.log(err);
-        console.log(image);
+        imgur.uploadFile(image).then(function (json) {
+          addPhotoList(json.data.link, function() {
+            next();
+          });
+        }).catch(function (err) {
+          console.error(err.message);
+        });
       });
     });
   });
