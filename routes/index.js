@@ -4,7 +4,6 @@ var imgur= require('imgur');
 var db= require('./db');
 var db2= require('./db2');
 var router= express.Router();
-//var histogram = require('histogram'); //testing histogram for comparison -- doesn't work on Heroku by default
 //var encount= 0;
 
 var Jimp = require('jimp'); //for cropping images -- can also diff with it
@@ -42,18 +41,6 @@ function addPhotoList(link, cb) {
   });
 }
 //Handling for photo uploads
-/*
-  fieldname: 'userPhoto', 
-  originalname: '5sZ4cJu.png', 
-  name: '5sZ4cJu1460655407723.png', 
-  encoding: '7bit', 
-  mimetype: 'image/png', 
-  path: 'uploads/5sZ4cJu1460655407723.png', 
-  extension: 'png', 
-  size: 163004, 
-  truncated: false, 
-  buffer: null
-*/
 router.use('/photo', multer({ dest: './uploads/',
   rename: function (fieldname, filename) {
     return filename+Date.now();
@@ -62,65 +49,26 @@ router.use('/photo', multer({ dest: './uploads/',
     console.log(file.originalname + ' is starting ...')
   },
   onFileUploadComplete: function (file) {
-    console.log(file);
-    Jimp.read(file.path, function (err, image) {
-        this.greyscale().scale(0.5).write(file.path, function(err, image) {
-          imgur.uploadFile(file.path).then(function (json) {
-            addPhotoList(json.data.link, function() {
-              return;
-            });
-          }).catch(function (err) {
-            console.error(err.message);
-          });
-        });
+    imgur.uploadFile(file.path).then(function (json) {
+      addPhotoList(json.data.link, function() {
+        return;
+      });
+    }).catch(function (err) {
+      console.error(err.message);
     });
-    // Jimp.read("lenna.png", function (err, image) {
-    //   image.greyscale(function(err, image) {
-    //     image.scale(0.5, function (err, image) {
-    //       image.write("lena-half-bw.png");
-    //     });
-    //   });
-    // });
-    // imgur.uploadFile(file.path).then(function (json) {
-    //   addPhotoList(json.data.link, function() {
-    //     return;
-    //   });
-    // }).catch(function (err) {
-    //   console.error(err.message);
-    // });
   }
 }));
 router.post('/photo', function (req, res) {
   res.redirect('/');
 });
 router.post('/link', function (req, res) {
-  Jimp.read(req.body.photoLink, function (err, image) {
-    if(err)
-      console.log(err);
-    image.greyscale(function(err, image) {
-      if(err)
-        console.log(err)
-      image.scale(0.5, function (err, image) {
-        if(err)
-          console.log(err);
-        image.write("testing.png");
-        imgur.uploadFile("testing.png").then(function (json) {
-          addPhotoList(json.data.link, function() {
-            next();
-          });
-        }).catch(function (err) {
-          console.error(err.message);
-        });
-      });
+  imgur.uploadUrl(req.body.photoLink).then(function (json) {
+    addPhotoList(json.data.link, function() {
+      return res.redirect('/');
     });
+  }).catch(function (err) {
+    console.error(err.message);
   });
-  // imgur.uploadUrl(req.body.photoLink).then(function (json) {
-  //   addPhotoList(json.data.link, function() {
-  //     return res.redirect('/');
-  //   });
-  // }).catch(function (err) {
-  //   console.error(err.message);
-  // });
 });
 router.post('/imgDel', function(req, res) {
   db2.removeLink(req.body.imgid, function(reply) {
@@ -139,6 +87,32 @@ router.post('/todoDel', function (req, res) {
   });
 });
 //FISH STUFF
+router.use('/fishpic', multer({ dest: './uploads/',
+  rename: function (fieldname, filename) {
+    return filename+Date.now();
+  },
+  onFileUploadStart: function (file) {
+    console.log(file.originalname + ' is starting ...')
+  },
+  onFileUploadComplete: function (file) {
+    Jimp.read(file.path, function (err, image) {
+      //change greyscale and scale to be what I need instead
+      this.greyscale().scale(0.5).write(file.path, function(err, image) {
+        //maybe don't need this because no reason to upload to imgur
+        // imgur.uploadFile(file.path).then(function (json) {
+        //   addPhotoList(json.data.link, function() {
+        //     return;
+        //   });
+        // }).catch(function (err) {
+        //   console.error(err.message);
+        // });
+      });
+    });
+  }
+}));
+router.post('/fishpic', function(req, res) {
+  //do shit
+});
 router.post('/fish', function(req, res) {
   db2.fish.saveFish(req.body, function(doc) {
     return res.redirect('/');
