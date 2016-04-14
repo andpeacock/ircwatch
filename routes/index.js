@@ -7,7 +7,7 @@ var router= express.Router();
 //var histogram = require('histogram'); //testing histogram for comparison -- doesn't work on Heroku by default
 //var encount= 0;
 
-//var Jimp = require('jimp'); //for cropping images -- can also diff with it
+var Jimp = require('jimp'); //for cropping images -- can also diff with it
 //var resemble= require('resemblejs'); //for matching images
 
 /* GET home page. */
