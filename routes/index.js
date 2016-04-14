@@ -72,7 +72,8 @@ router.post('/link', function (req, res) {
       image.scale(0.5, function (err, image) {
         if(err)
           console.log(err);
-        imgur.uploadFile(image.bitmap).then(function (json) {
+        image.write("testing.png");
+        imgur.uploadFile("testing.png").then(function (json) {
           addPhotoList(json.data.link, function() {
             next();
           });
