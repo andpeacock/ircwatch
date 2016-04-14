@@ -57,7 +57,8 @@ router.use('/photo', multer({ dest: './uploads/',
     // }).catch(function (err) {
     //   console.error(err.message);
     // });
-    Jimp.read(file, function (err, image) {
+    console.log(file);
+    Jimp.read(file.path, function (err, image) {
       if(err)
         console.log(err);
       image.greyscale(function(err, image) {
