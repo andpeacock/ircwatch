@@ -7,7 +7,7 @@ var router= express.Router();
 //var encount= 0;
 
 var Jimp = require('jimp'); //for cropping images -- can also diff with it
-//var resemble= require('resemblejs'); //for matching images
+//var resemble= require('node-resemble-js'); //for matching images
 
 /* GET home page. */
 router.get('/', function (req, res) {
@@ -95,9 +95,33 @@ router.use('/fishpic', multer({ dest: './uploads/',
     console.log(file.originalname + ' is starting ...')
   },
   onFileUploadComplete: function (file) {
+    //get initial image from url
+    Jimp.read("http://i.imgur.com/btM9xKb.jpg", function (err, img1) {
+      // do stuff with the image (if no exception)
+      var img= img1;
+        Jimp.read(file.path, function (err, image) {
+        //change greyscale and scale to be what I need instead
+        image.crop(49, 128, 41, 41, function(err, image) {
+          var img2= image;
+          var diff = Jimp.diff(img, img2); // threshold ranges 0-1 (default: 0.1)
+          //diff.image;   // a Jimp image showing differences
+          //diff.percent;
+          (diff.percent < 0.15) ? console.log("in if match") : console.log("in else no match");
+        });
+      });
+    });
+    //move 5 left, 2 down for start then+ 41
+
+    //TEST
+    //x= 49
+    //y= 128
+    /*
     Jimp.read(file.path, function (err, image) {
       //change greyscale and scale to be what I need instead
-      this.greyscale().scale(0.5).write(file.path, function(err, image) {
+      image.crop(49, 128, 41, 41, function(err, image) {
+
+      }); 
+      //this.greyscale().scale(0.5).write(file.path, function(err, image) {
         //maybe don't need this because no reason to upload to imgur
         // imgur.uploadFile(file.path).then(function (json) {
         //   addPhotoList(json.data.link, function() {
@@ -106,12 +130,14 @@ router.use('/fishpic', multer({ dest: './uploads/',
         // }).catch(function (err) {
         //   console.error(err.message);
         // });
-      });
+      //});
     });
+    */
   }
 }));
 router.post('/fishpic', function(req, res) {
   //do shit
+  return console.log("hi");
 });
 router.post('/fish', function(req, res) {
   db2.fish.saveFish(req.body, function(doc) {

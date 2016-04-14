@@ -29,6 +29,9 @@ block content
     div.container
       h1.title#fishh1 Fish Tables
       label(for="fishName").title Add Fish
+      form(enctype="multipart/form-data", action="/fishpic", method="POST").control.is-grouped#uploadFish
+          input(type="file", name="fishPic").input#fishpicInput
+          button(type="submit", value="Upload Image", name="submit").button.is-primary.is-info Submit Photo
       form(action="/fish", method="POST").control.is-grouped#fishForm
         input(type="text", name="fishName", placeholder="Fish Name").input#fishName
         input(type="number", name="fishNum", placeholder="Number of Fish").input#fishNum
