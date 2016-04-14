@@ -105,7 +105,7 @@ router.use('/fishpic', multer({ dest: './uploads/',
           var img2= image;
           console.log(img2);
           console.log(img);
-          var diff= Jimp.diff(img2, img); // threshold ranges 0-1 (default: 0.1)
+          var diff = Jimp.diff(img2, img); // threshold ranges 0-1 (default: 0.1)
           //diff.image;   // a Jimp image showing differences
           //diff.percent;
           console.log("diff percent: "+ diff.percent);
@@ -121,7 +121,7 @@ router.use('/fishpic', multer({ dest: './uploads/',
               console.error(err.message);
             });
           });
-          *
+          */
         });
       });
     });
