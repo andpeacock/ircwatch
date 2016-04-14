@@ -50,32 +50,12 @@ router.use('/photo', multer({ dest: './uploads/',
     console.log(file.originalname + ' is starting ...')
   },
   onFileUploadComplete: function (file) {
-    // imgur.uploadFile(file.path).then(function (json) {
-    //   addPhotoList(json.data.link, function() {
-    //     next();
-    //   });
-    // }).catch(function (err) {
-    //   console.error(err.message);
-    // });
-    console.log(file);
-    Jimp.read(file.path, function (err, image) {
-      if(err)
-        console.log(err);
-      image.greyscale(function(err, image) {
-        if(err)
-          console.log(err)
-        image.scale(0.5, function (err, image) {
-          if(err)
-            console.log(err)
-          imgur.uploadFile(image).then(function (json) {
-            addPhotoList(json.data.link, function() {
-              next();
-            });
-          }).catch(function (err) {
-            console.error(err.message);
-          });
-        });
+    imgur.uploadFile(file.path).then(function (json) {
+      addPhotoList(json.data.link, function() {
+        next();
       });
+    }).catch(function (err) {
+      console.error(err.message);
     });
   }
 }));
@@ -83,13 +63,26 @@ router.post('/photo', function (req, res) {
   res.redirect('/');
 });
 router.post('/link', function (req, res) {
-  imgur.uploadUrl(req.body.photoLink).then(function (json) {
-    addPhotoList(json.data.link, function() {
-      return res.redirect('/');
+  Jimp.read(req.body.photoLink, function (err, image) {
+    if(err)
+      console.log(err);
+    image.greyscale(function(err, image) {
+      if(err)
+        console.log(err)
+      image.scale(0.5, function (err, image) {
+        if(err)
+          console.log(err);
+        console.log(image);
+      });
     });
-  }).catch(function (err) {
-    console.error(err.message);
   });
+  // imgur.uploadUrl(req.body.photoLink).then(function (json) {
+  //   addPhotoList(json.data.link, function() {
+  //     return res.redirect('/');
+  //   });
+  // }).catch(function (err) {
+  //   console.error(err.message);
+  // });
 });
 router.post('/imgDel', function(req, res) {
   db2.removeLink(req.body.imgid, function(reply) {
