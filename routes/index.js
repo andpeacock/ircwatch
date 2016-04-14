@@ -6,6 +6,9 @@ var db2= require('./db2');
 var router= express.Router();
 //var encount= 0;
 
+//var Jimp = require('jimp'); //for cropping images
+//var resemble= require('resemblejs'); for matching images
+
 /* GET home page. */
 router.get('/', function (req, res) {
   db.getMultiList(['zulu'], function (rlist) {

@@ -69,7 +69,7 @@ var fish= {
       "name": data.fishName,
       "num": parseInt(data.fishNum),
       "loc": data.fishLoc,
-      "colour": data.fishColour
+      "colour": data.fishColour|| self.getColour(data.fishName)
     };
     //Check whether or not this fish already exists in this location
     db.fish.where("name=$1 AND loc=$2", [data.fishName, data.fishLoc], function(err, doc) {
@@ -108,7 +108,7 @@ var fish= {
     db.fish.find({name: fish}, function(err, results) {
       if(err)
         return console.log(err);
-      return results[0].colour;
+      return results[0].colour;//could have issues with time
     });
   }
 };
