@@ -105,11 +105,14 @@ router.use('/fishpic', multer({ dest: './uploads/',
           var img2= image;
           console.log(img2);
           console.log(img);
-          var diff = Jimp.diff(img2, img); // threshold ranges 0-1 (default: 0.1)
+          var distance = Jimp.distance(img, img2);
+          var diff = Jimp.diff(img, img2); // threshold ranges 0-1 (default: 0.1)
           //diff.image;   // a Jimp image showing differences
           //diff.percent;
           console.log("diff percent: "+ diff.percent);
           console.log(diff);
+          console.log("distance: "+ distance);
+          (distance < 0.15 || diff.percent < 0.2) ? console.log("in if match") : console.log("in else no match");
           /*
           (diff.percent < 0.15) ? console.log("in if match") : console.log("in else no match");
           image.write(file.path, function(err, image) {
