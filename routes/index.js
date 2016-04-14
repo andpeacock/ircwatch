@@ -7,8 +7,8 @@ var router= express.Router();
 //var histogram = require('histogram'); //testing histogram for comparison -- doesn't work on Heroku by default
 //var encount= 0;
 
-//var Jimp = require('jimp'); //for cropping images
-//var resemble= require('resemblejs'); for matching images
+//var Jimp = require('jimp'); //for cropping images -- can also diff with it
+//var resemble= require('resemblejs'); //for matching images
 
 /* GET home page. */
 router.get('/', function (req, res) {
@@ -50,12 +50,25 @@ router.use('/photo', multer({ dest: './uploads/',
     console.log(file.originalname + ' is starting ...')
   },
   onFileUploadComplete: function (file) {
-    imgur.uploadFile(file.path).then(function (json) {
-      addPhotoList(json.data.link, function() {
-        return;
-      });
-    }).catch(function (err) {
-      console.error(err.message);
+    // imgur.uploadFile(file.path).then(function (json) {
+    //   addPhotoList(json.data.link, function() {
+    //     next();
+    //   });
+    // }).catch(function (err) {
+    //   console.error(err.message);
+    // });
+    Jimp.read(file, function (err, image) {
+        image.greyscale(function(err, image) {
+            image.scale(0.5, function (err, image) {
+                imgur.uploadFile(image).then(function (json) {
+                  addPhotoList(json.data.link, function() {
+                    next();
+                  });
+                }).catch(function (err) {
+                  console.error(err.message);
+                });
+            });
+        });
     });
   }
 }));
