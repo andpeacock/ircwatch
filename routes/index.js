@@ -50,6 +50,7 @@ router.use('/photo', multer({ dest: './uploads/',
     console.log(file.originalname + ' is starting ...')
   },
   onFileUploadComplete: function (file) {
+    console.log(file);
     imgur.uploadFile(file.path).then(function (json) {
       addPhotoList(json.data.link, function() {
         next();
