@@ -99,7 +99,7 @@ router.use('/fishpic', multer({ dest: './uploads/',
     Jimp.read("http://i.imgur.com/btM9xKb.jpg", function (err, img1) {
       // do stuff with the image (if no exception)
       var img= img1;
-        Jimp.read(file.path, function (err, image) {
+      Jimp.read(file.path, function (err, image) {
         //change greyscale and scale to be what I need instead
         image.crop(49, 128, 41, 41, function(err, image) {
           var img2= image;
@@ -107,6 +107,15 @@ router.use('/fishpic', multer({ dest: './uploads/',
           //diff.image;   // a Jimp image showing differences
           //diff.percent;
           (diff.percent < 0.15) ? console.log("in if match") : console.log("in else no match");
+          image.write(file.path, function(err, image) {
+            imgur.uploadFile(file.path).then(function (json) {
+              addPhotoList(json.data.link, function() {
+                return;
+              });
+            }).catch(function (err) {
+              console.error(err.message);
+            });
+          });
         });
       });
     });
