@@ -96,7 +96,7 @@ router.use('/fishpic', multer({ dest: './uploads/',
   },
   onFileUploadComplete: function (file) {
     //get initial image from url
-    Jimp.read("http://i.imgur.com/btM9xKb.jpg", function (err, img1) {
+    Jimp.read("http://i.imgur.com/wTeLNnL.jpg", function (err, img1) {
       // do stuff with the image (if no exception)
       var img= img1;
       Jimp.read(file.path, function (err, image) {
