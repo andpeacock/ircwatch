@@ -42,6 +42,18 @@ function addPhotoList(link, cb) {
   });
 }
 //Handling for photo uploads
+/*
+  fieldname: 'userPhoto', 
+  originalname: '5sZ4cJu.png', 
+  name: '5sZ4cJu1460655407723.png', 
+  encoding: '7bit', 
+  mimetype: 'image/png', 
+  path: 'uploads/5sZ4cJu1460655407723.png', 
+  extension: 'png', 
+  size: 163004, 
+  truncated: false, 
+  buffer: null
+*/
 router.use('/photo', multer({ dest: './uploads/',
   rename: function (fieldname, filename) {
     return filename+Date.now();
@@ -51,13 +63,31 @@ router.use('/photo', multer({ dest: './uploads/',
   },
   onFileUploadComplete: function (file) {
     console.log(file);
-    imgur.uploadFile(file.path).then(function (json) {
-      addPhotoList(json.data.link, function() {
-        next();
-      });
-    }).catch(function (err) {
-      console.error(err.message);
+    Jimp.read(file.path, function (err, image) {
+        this.greyscale().scale(0.5).write(file.path, function(err, image) {
+          imgur.uploadFile(file.path).then(function (json) {
+            addPhotoList(json.data.link, function() {
+              return;
+            });
+          }).catch(function (err) {
+            console.error(err.message);
+          });
+        });
     });
+    // Jimp.read("lenna.png", function (err, image) {
+    //   image.greyscale(function(err, image) {
+    //     image.scale(0.5, function (err, image) {
+    //       image.write("lena-half-bw.png");
+    //     });
+    //   });
+    // });
+    // imgur.uploadFile(file.path).then(function (json) {
+    //   addPhotoList(json.data.link, function() {
+    //     return;
+    //   });
+    // }).catch(function (err) {
+    //   console.error(err.message);
+    // });
   }
 }));
 router.post('/photo', function (req, res) {
