@@ -57,18 +57,24 @@ router.use('/photo', multer({ dest: './uploads/',
     // }).catch(function (err) {
     //   console.error(err.message);
     // });
-    Jimp.read(file.path, function (err, image) {
-        image.greyscale(function(err, image) {
-            image.scale(0.5, function (err, image) {
-                imgur.uploadFile(image).then(function (json) {
-                  addPhotoList(json.data.link, function() {
-                    next();
-                  });
-                }).catch(function (err) {
-                  console.error(err.message);
-                });
+    Jimp.read(file, function (err, image) {
+      if(err)
+        console.log(err);
+      image.greyscale(function(err, image) {
+        if(err)
+          console.log(err)
+        image.scale(0.5, function (err, image) {
+          if(err)
+            console.log(err)
+          imgur.uploadFile(image).then(function (json) {
+            addPhotoList(json.data.link, function() {
+              next();
             });
+          }).catch(function (err) {
+            console.error(err.message);
+          });
         });
+      });
     });
   }
 }));
