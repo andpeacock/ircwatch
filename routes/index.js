@@ -107,7 +107,7 @@ router.use('/fishpic', multer({ dest: './uploads/',
         //change greyscale and scale to be what I need instead
         //48, 128
         function rcrop(x, y, image, cb) {
-          image.crop(x, y, 41, 41, function(err, image) {
+          image.crop(x, y, 41, 41, function(err, image) {r
             var img2= image;
             var distance = Jimp.distance(img, img2);
             var diff = Jimp.diff(img, img2); // threshold ranges 0-1 (default: 0.1)
