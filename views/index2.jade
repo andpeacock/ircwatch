@@ -25,33 +25,33 @@ block content
         form(action="/todo", method="POST").control.is-grouped#todoForm
           input(type="text", name="newTodo").input#todoInput
           button(type="submit", value="New Todo", name="submit").button.is-primary.is-info New Todo
-  div.section
-    div.container
-      h1.title#fishh1 Fish Tables
-      label(for="fishName").title Add Fish
-      //- form(enctype="multipart/form-data", action="/fishpic", method="POST").control.is-grouped#uploadFish
-      //-     input(type="file", name="fishPic").input#fishpicInput
-      //-     button(type="submit", value="Upload Image", name="submit").button.is-primary.is-info Submit Photo
-      form(action="/fish", method="POST").control.is-grouped#fishForm
-        input(type="text", name="fishName", placeholder="Fish Name").input#fishName
-        input(type="number", name="fishNum", placeholder="Number of Fish").input#fishNum
-        input(type="text", name="fishLoc", placeholder="Fish Location").input#fishLoc
-        input(type="text", name="fishColour", placeholder="Fish Colour").input#fishColour
-        //- p.control
-        //-   span.select
-        //-     select#fishType
-        //-       option(val="green") Green
-        //-       option(val="blue") Blue
-        //-       option(val="gold") Gold
-        button(type="submit", value="Add Fish", name="submit").button.is-primary.is-info Add Fish
-      label(for="locSel").title Find Fish
-      div.control.is-grouped
-        p.control
-          span.select
-            select#locSel
-              for loc in loclist
-                option(val="#{loc.loc}")= loc.loc
-        button(value="Select Location", name="Select Location").button.is-primary.is-info#getFishTable Select Location
+  //- div.section
+  //-   div.container
+  //-     h1.title#fishh1 Fish Tables
+  //-     label(for="fishName").title Add Fish
+  //-     //- form(enctype="multipart/form-data", action="/fishpic", method="POST").control.is-grouped#uploadFish
+  //-     //-     input(type="file", name="fishPic").input#fishpicInput
+  //-     //-     button(type="submit", value="Upload Image", name="submit").button.is-primary.is-info Submit Photo
+  //-     form(action="/fish", method="POST").control.is-grouped#fishForm
+  //-       input(type="text", name="fishName", placeholder="Fish Name").input#fishName
+  //-       input(type="number", name="fishNum", placeholder="Number of Fish").input#fishNum
+  //-       input(type="text", name="fishLoc", placeholder="Fish Location").input#fishLoc
+  //-       input(type="text", name="fishColour", placeholder="Fish Colour").input#fishColour
+  //-       //- p.control
+  //-       //-   span.select
+  //-       //-     select#fishType
+  //-       //-       option(val="green") Green
+  //-       //-       option(val="blue") Blue
+  //-       //-       option(val="gold") Gold
+  //-       button(type="submit", value="Add Fish", name="submit").button.is-primary.is-info Add Fish
+  //-     label(for="locSel").title Find Fish
+  //-     div.control.is-grouped
+  //-       p.control
+  //-         span.select
+  //-           select#locSel
+  //-             for loc in loclist
+  //-               option(val="#{loc.loc}")= loc.loc
+  //-       button(value="Select Location", name="Select Location").button.is-primary.is-info#getFishTable Select Location
   div.section
     div.container
       h1.title#todoh1 Todo
